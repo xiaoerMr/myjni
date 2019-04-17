@@ -47,10 +47,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:mockwebserver:3.5.0'
     implementation 'com.alibaba:fastjson:1.1.70.android'
     implementation 'me.weyye.hipermission:library:1.0.7'
-//    implementation(name: 'dutillibrary-release', ext: 'aar')
+    //    implementation(name: 'dutillibrary-release', ext: 'aar')
     //    testImplementation 'junit:junit:4.12'
     //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
     //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/AMap3DMap_6.5.0_AMapNavi_6.4.0_AMapSearch_6.5.0_AMapLocation_4.3.0_20181016.jar')
-    implementation project(':dutillibrary')
+    implementation project(':sailib')
+
 }

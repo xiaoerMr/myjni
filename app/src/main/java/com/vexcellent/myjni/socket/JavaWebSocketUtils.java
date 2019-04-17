@@ -1,6 +1,6 @@
 package com.vexcellent.myjni.socket;
 
-import com.dianxiaoer.dutillibrary.log.DLog;
+import com.sai.sailib.log.DLog;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;

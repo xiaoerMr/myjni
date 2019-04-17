@@ -2,7 +2,7 @@ package com.vexcellent.myjni;
 
 import android.app.Application;
 
-import com.dianxiaoer.dutillibrary.log.DLog;
+import com.sai.sailib.log.DLog;
 
 public class MyApplication extends Application {
     private static final boolean DEBUG_MODE = true;

@@ -3,7 +3,6 @@ package com.vexcellent.myjni.dia;
 
 import android.view.View;
 
-import com.dianxiaoer.dutillibrary.toast.DToast;
 import com.vexcellent.myjni.R;
 import com.vexcellent.myjni.base.BaseActivity;
 

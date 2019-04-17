@@ -10,7 +10,7 @@ import android.net.NetworkRequest;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.dianxiaoer.dutillibrary.log.DLog;
+import com.sai.sailib.log.DLog;
 import com.vexcellent.myjni.BuildConfig;
 
 public class NetManager {

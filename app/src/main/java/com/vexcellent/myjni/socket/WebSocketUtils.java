@@ -2,7 +2,7 @@ package com.vexcellent.myjni.socket;
 
 
 
-import com.dianxiaoer.dutillibrary.log.DLog;
+import com.sai.sailib.log.DLog;
 import com.neovisionaries.ws.client.WebSocket;
 import com.neovisionaries.ws.client.WebSocketAdapter;
 import com.neovisionaries.ws.client.WebSocketException;
