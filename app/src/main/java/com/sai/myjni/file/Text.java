@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.file;
+package com.sai.myjni.file;
 
 public class Text {
 

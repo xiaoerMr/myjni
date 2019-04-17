@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.netstate;
+package com.sai.myjni.netstate;
 
 public interface NetStateListener {
     void StateNone();

@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.base;
+package com.sai.myjni.base;
 
 import android.content.Intent;
 import android.os.Bundle;

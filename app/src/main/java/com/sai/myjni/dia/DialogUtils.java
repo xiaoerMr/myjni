@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.dia;
+package com.sai.myjni.dia;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.vexcellent.myjni.R;
+import com.sai.myjni.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

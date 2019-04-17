@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.thread;
+package com.sai.myjni.thread;
 
 import android.os.Handler;
 import android.os.Message;
@@ -7,8 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.sai.sailib.time.TimeUtils;
-import com.vexcellent.myjni.R;
-import com.vexcellent.myjni.base.BaseActivity;
+import com.sai.myjni.R;
+import com.sai.myjni.base.BaseActivity;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;

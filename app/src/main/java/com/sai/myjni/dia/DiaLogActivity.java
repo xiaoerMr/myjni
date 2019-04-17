@@ -1,10 +1,10 @@
-package com.vexcellent.myjni.dia;
+package com.sai.myjni.dia;
 
 
 import android.view.View;
 
-import com.vexcellent.myjni.R;
-import com.vexcellent.myjni.base.BaseActivity;
+import com.sai.myjni.R;
+import com.sai.myjni.base.BaseActivity;
 
 import butterknife.OnClick;
 

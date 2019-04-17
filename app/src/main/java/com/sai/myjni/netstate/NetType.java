@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.netstate;
+package com.sai.myjni.netstate;
 
 public enum NetType {
     NONE, //没有连接

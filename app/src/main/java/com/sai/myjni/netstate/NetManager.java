@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.netstate;
+package com.sai.myjni.netstate;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,6 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.sai.sailib.log.DLog;
-import com.vexcellent.myjni.BuildConfig;
 
 public class NetManager {
     private static NetManager manager;

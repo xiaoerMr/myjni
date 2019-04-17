@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.socket;
+package com.sai.myjni.socket;
 
 
 

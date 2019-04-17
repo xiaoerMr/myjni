@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.file;
+package com.sai.myjni.file;
 
 import android.os.Parcel;
 import android.os.Parcelable;

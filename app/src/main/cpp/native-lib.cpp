@@ -6,7 +6,7 @@ void LOGE(jstring str) {
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_vexcellent_myjni_JniActivity_stringFromJNI(
+Java_com_sai_myjni_JniActivity_stringFromJNI(
         JNIEnv *env,
         jobject /* this */) {
 
@@ -20,7 +20,7 @@ Java_com_vexcellent_myjni_JniActivity_stringFromJNI(
 
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_vexcellent_myjni_JniActivity_StrFromJni(JNIEnv *env, jobject instance) {
+Java_com_sai_myjni_JniActivity_StrFromJni(JNIEnv *env, jobject instance) {
 
 
     std::string hello = "撒娇发顺丰";

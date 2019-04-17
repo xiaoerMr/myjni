@@ -1,20 +1,18 @@
-package com.vexcellent.myjni;
+package com.sai.myjni;
 
 import android.Manifest;
 import android.view.View;
-import android.widget.Button;
 
-import com.vexcellent.myjni.base.BaseActivity;
-import com.vexcellent.myjni.dia.DiaLogActivity;
-import com.vexcellent.myjni.file.ReadFileActivity;
-import com.vexcellent.myjni.netstate.NetStateActivity;
-import com.vexcellent.myjni.socket.SocketActivity;
-import com.vexcellent.myjni.thread.ThreadActivity;
+import com.sai.myjni.base.BaseActivity;
+import com.sai.myjni.dia.DiaLogActivity;
+import com.sai.myjni.file.ReadFileActivity;
+import com.sai.myjni.netstate.NetStateActivity;
+import com.sai.myjni.socket.SocketActivity;
+import com.sai.myjni.thread.ThreadActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;

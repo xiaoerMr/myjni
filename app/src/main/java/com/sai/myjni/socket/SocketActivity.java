@@ -1,16 +1,14 @@
-package com.vexcellent.myjni.socket;
+package com.sai.myjni.socket;
 
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.vexcellent.myjni.R;
-import com.vexcellent.myjni.base.BaseActivity;
+import com.sai.myjni.R;
+import com.sai.myjni.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Response;
 import okhttp3.WebSocket;

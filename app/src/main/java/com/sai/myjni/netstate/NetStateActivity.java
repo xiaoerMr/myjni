@@ -1,9 +1,9 @@
-package com.vexcellent.myjni.netstate;
+package com.sai.myjni.netstate;
 
 import android.widget.TextView;
 
-import com.vexcellent.myjni.R;
-import com.vexcellent.myjni.base.BaseActivity;
+import com.sai.myjni.R;
+import com.sai.myjni.base.BaseActivity;
 
 import butterknife.BindView;
 

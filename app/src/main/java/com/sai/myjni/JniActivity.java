@@ -1,4 +1,4 @@
-package com.vexcellent.myjni;
+package com.sai.myjni;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.vexcellent.myjni.dia;
+package com.sai.myjni.dia;
 
 public interface DialogThreeListener extends DialogListener{
     @Override

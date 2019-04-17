@@ -1,4 +1,4 @@
-package com.vexcellent.myjni;
+package com.sai.myjni;
 
 import android.app.Application;
 
