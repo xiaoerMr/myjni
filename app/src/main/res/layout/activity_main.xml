@@ -51,4 +51,33 @@
         android:textAllCaps="false"
         android:text="线程池" />
 
+    <Button
+        android:id="@+id/toutiao"
+        android:layout_toEndOf="@+id/thread"
+        android:layout_below="@+id/jni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="头条屏幕适配" />
+
+
+
+
+    <com.sai.sailib.view.SaiEditView
+        android:id="@+id/boat_wave"
+        android:layout_below="@+id/toutiao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+
+<TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/ksw_md_thumb_shadow_inset"
+        android:layout_alignParentBottom="true"
+        android:text="测试从'弹出框'发送的事件" />
+
 </RelativeLayout>

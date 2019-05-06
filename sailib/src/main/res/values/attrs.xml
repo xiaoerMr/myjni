@@ -152,10 +152,17 @@
     </declare-styleable>
 
     <declare-styleable name="lineEdittext">
-
-
         <attr name="drawableError"/>
         <attr name="drawableUnFocus"/>
         <attr name="drawableFocus"/>
+    </declare-styleable>
+
+    <!--自定义EditText-->
+    <declare-styleable name="SaiEditText">
+
+        <attr name="ic_sai_delete" format="reference"/>
+        <attr name="ic_sai_heard" format="reference"/>
+      <attr name="sai_title" format="string"/>
+        <attr name="sai_text" format="string"/>
     </declare-styleable>
 </resources>

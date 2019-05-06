@@ -1,16 +1,32 @@
 package com.sai.myjni;
 
+import android.app.Activity;
 import android.app.Application;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import com.sai.sailib.log.DLog;
+import com.sai.sailib.smartdialog.SmartShow;
+
+import java.util.Stack;
 
 public class MyApplication extends Application {
     private static final boolean DEBUG_MODE = true;
+    /**
+     * 先进后出
+     */
+    public static Stack<Activity> store = new Stack<>();
 
     @Override
     public void onCreate() {
         super.onCreate();
         initDLog();
+        SmartShow.init(this);
+//        registerActivityLifecycleCallbacks(new ActivityCallBack());
     }
     private void initDLog(){
         DLog.Config config = DLog.init(this)
@@ -30,4 +46,69 @@ public class MyApplication extends Application {
                 .setStackDeep(2);// log栈深度，默认为1
         DLog.d(config.toString());
     }
+
+    class ActivityCallBack implements ActivityLifecycleCallbacks {
+
+        @Override
+        public void onActivityCreated(final Activity activity, Bundle savedInstanceState) {
+            store.add(activity);
+
+            //这里全局给Activity设置toolbar和title,你想象力有多丰富,这里就有多强大,以前放到BaseActivity的操作都可以放到这里
+//            if (activity.findViewById(R.id.toolbar) != null) { //找到 Toolbar 并且替换 Actionbar
+//                if (activity instanceof AppCompatActivity) {
+//                    ((AppCompatActivity) activity).setSupportActionBar((Toolbar) activity.findViewById(R.id.toolbar));
+//                    ((AppCompatActivity) activity).getSupportActionBar().setDisplayShowTitleEnabled(false);
+//                } else {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        activity.setActionBar((android.widget.Toolbar) activity.findViewById(R.id.toolbar));
+//                        activity.getActionBar().setDisplayShowTitleEnabled(false);
+//                    }
+//                }
+//            }
+//            if (activity.findViewById(R.id.toolbar_title) != null) { //找到 Toolbar 的标题栏并设置标题名
+//                ((TextView) activity.findViewById(R.id.toolbar_title)).setText(activity.getTitle());
+//            }
+//            if (activity.findViewById(R.id.toolbar_back) != null) { //找到 Toolbar 的返回按钮,并且设置点击事件,点击关闭这个 Activity
+//                activity.findViewById(R.id.toolbar_back).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        activity.onBackPressed();
+//                    }
+//                });
+//            }
+
+    }
+
+        @Override
+        public void onActivityStarted(Activity activity) {
+
+        }
+
+        @Override
+        public void onActivityResumed(Activity activity) {
+        }
+
+        @Override
+        public void onActivityPaused(Activity activity) {
+
+        }
+
+        @Override
+        public void onActivityStopped(Activity activity) {
+
+        }
+
+        @Override
+        public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+        }
+
+        @Override
+        public void onActivityDestroyed(Activity activity) {
+            store.remove(activity);
+
+        }
+    }
+
+
 }

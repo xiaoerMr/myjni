@@ -10,6 +10,8 @@ import com.sai.sailib.time.TimeUtils;
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
@@ -150,5 +152,30 @@ public class ThreadActivity extends BaseActivity {
         if (null != scheduledThreadPool) {
             scheduledThreadPool.shutdownNow();
         }
+
+
+        ExecutorService pool = Executors.newFixedThreadPool(5);
+        pool.submit(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        ExecutorService pool1 = Executors.newCachedThreadPool();
+        pool1.execute(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        ExecutorService pool2 = Executors.newSingleThreadExecutor();
+        pool2.submit(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
 }

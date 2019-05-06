@@ -8,5 +8,6 @@
     <color name="colorDiaTitle">#1E1E1E</color>
     <color name="colorDiaText">#515151</color>
     <color name="colorDiaTransparent">#00515151</color>
+    <color name="color1">#C0CA33</color>
 
 </resources>

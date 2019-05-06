@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="sai_heard" type="id"/>
+    <item name="sai_delete" type="id"/>
+    <item name="sai_text" type="id"/>
+    <item name="sai_title" type="id"/>
+
+</resources>

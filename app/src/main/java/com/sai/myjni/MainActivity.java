@@ -1,24 +1,40 @@
 package com.sai.myjni;
 
 import android.Manifest;
+import android.arch.lifecycle.Observer;
+import android.os.Bundle;
+import android.os.MessageQueue;
+import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.TextView;
 
 import com.sai.myjni.base.BaseActivity;
 import com.sai.myjni.dia.DiaLogActivity;
 import com.sai.myjni.file.ReadFileActivity;
+import com.sai.myjni.livedata.LiveDataBus;
 import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
+import com.sai.sailib.toast.DToast;
+import com.sai.sailib.view.BoatWaveView;
+import com.sai.sailib.view.SaiEditView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
 
 public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.text)
+    TextView text;
+    @BindView(R.id.boat_wave)
+    SaiEditView boatWave;
 
     @Override
     protected int getLayoutId() {
@@ -29,9 +45,27 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         initPermission();
 
+        //测试从 DiaLogActivity 发送的 消息总线
+        //有一个 bug: 先发送事件,后订阅也可以收到事件
+        LiveDataBus.getInstance()
+                .getChannel("TestLiveDataBus", String.class)
+                .observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(@Nullable String s) {
+                        text.setText(s);
+                    }
+                });
+
+        boatWave.setSaiHeard(getDrawable(R.drawable.icon_service))
+                .setSaiTitle("你好")
+                .setSaiEdit();
+
+
     }
 
-    @OnClick({R.id.jni, R.id.socket,R.id.net_state,R.id.read_file,R.id.dialog,R.id.thread})
+    @OnClick({R.id.jni, R.id.socket, R.id.net_state,
+            R.id.read_file, R.id.dialog, R.id.thread,
+            R.id.toutiao})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.jni:
@@ -52,6 +86,10 @@ public class MainActivity extends BaseActivity {
             case R.id.thread:
                 JumpActivity(ThreadActivity.class);
                 break;
+            case R.id.toutiao:
+                JumpActivity(TouTiaoActivity.class);
+                break;
+            default:
         }
     }
 
@@ -91,4 +129,6 @@ public class MainActivity extends BaseActivity {
                 });
 
     }
+
+
 }
