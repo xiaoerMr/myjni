@@ -21,7 +21,7 @@ public class ChooseListAdapter extends BaseAdapter {
     private List mItems = new ArrayList();
     private int mCheckMarkPos = Gravity.LEFT;
     @ColorInt
-    private int mCheckMarkColor = Utils.getColorFromRes(R.color.colorPrimary);
+    private int mCheckMarkColor = Utils.getColorFromRes(R.color.smairColorPrimary);
 
     private boolean mUseCubeMark;
 

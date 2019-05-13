@@ -1,3 +1,5 @@
 <resources>
-    <!--<string name="app_name">sailib</string>-->
+    <string name="name">smart-dialog</string>
+
+
 </resources>

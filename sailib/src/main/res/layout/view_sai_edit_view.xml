@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_service" />
+        app:srcCompat="@drawable/sai_icon_service" />
 
     <TextView
         android:id="@+id/sai_edit_title"
@@ -48,6 +48,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_delete" />
+        app:srcCompat="@drawable/sai_icon_delete" />
 
 </android.support.constraint.ConstraintLayout>

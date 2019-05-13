@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
-import com.sai.myjni.livedata.LiveDataBus;
+import com.sai.sailib.livedata.LiveDataBus;
 import com.sai.sailib.smartdialog.ChooseListDialog;
 import com.sai.sailib.smartdialog.ChooseResult;
 import com.sai.sailib.smartdialog.ClickListDialog;
@@ -61,7 +61,8 @@ public class DiaLogActivity extends BaseActivity {
                 break;
             //测试
             case R.id.testlivedatabus:
-                LiveDataBus.getInstance().getChannel("TestLiveDataBus").setValue("我是 DiaLogActivity 发送的事件");
+//                LiveDataBus.getInstance().getChannel("")
+//                        .getChannel("TestLiveDataBus").setValue("我是 DiaLogActivity 发送的事件");
                 break;
             // smairt 提示
             case R.id.button6:
@@ -139,7 +140,7 @@ public class DiaLogActivity extends BaseActivity {
                         .title("请选择语言")
                         .defaultChoosePos(0)
                         .checkMarkPos(Gravity.LEFT)
-                        .checkMarkColorRes(R.color.colorPrimaryDark)
+                        .checkMarkColorRes(R.color.smairtColorPrimaryDark)
                         .choiceMode(ChooseListDialog.CHOICE_MODE_SINGLE)
                         .keepChosenPosByLast(true)
                         .items(new String[]{
@@ -230,6 +231,8 @@ public class DiaLogActivity extends BaseActivity {
             }
         });
         utils.Show(getSupportFragmentManager());
+
+
     }
 
     //一个按钮

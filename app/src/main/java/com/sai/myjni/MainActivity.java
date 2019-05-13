@@ -1,29 +1,30 @@
 package com.sai.myjni;
 
 import android.Manifest;
-import android.arch.lifecycle.Observer;
-import android.os.Bundle;
-import android.os.MessageQueue;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.sai.myjni.base.BaseActivity;
 import com.sai.myjni.dia.DiaLogActivity;
 import com.sai.myjni.file.ReadFileActivity;
-import com.sai.myjni.livedata.LiveDataBus;
 import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
+import com.sai.sailib.button.SwitchButton;
+import com.sai.sailib.livedata.LiveDataBus;
 import com.sai.sailib.toast.DToast;
-import com.sai.sailib.view.BoatWaveView;
 import com.sai.sailib.view.SaiEditView;
+import com.sai.sailib.view.view.SaiEdit;
+import com.sai.sailib.view.view.SaiSpinner;
+import com.sai.sailib.view.view.SaiText;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
@@ -35,6 +36,14 @@ public class MainActivity extends BaseActivity {
     TextView text;
     @BindView(R.id.boat_wave)
     SaiEditView boatWave;
+    @BindView(R.id.sai_edit)
+    SaiEdit vSaiEdit;
+    @BindView(R.id.sai_view_text)
+    SaiText vSaiText;
+    @BindView(R.id.sai_spinner)
+    SaiSpinner vSaiSpinner;
+    @BindView(R.id.sb_custom)
+    SwitchButton vSwitchButton;
 
     @Override
     protected int getLayoutId() {
@@ -47,20 +56,63 @@ public class MainActivity extends BaseActivity {
 
         //测试从 DiaLogActivity 发送的 消息总线
         //有一个 bug: 先发送事件,后订阅也可以收到事件
-        LiveDataBus.getInstance()
-                .getChannel("TestLiveDataBus", String.class)
-                .observe(this, new Observer<String>() {
-                    @Override
-                    public void onChanged(@Nullable String s) {
-                        text.setText(s);
-                    }
-                });
+//        LiveDataBus.getInstance()
+//                .getChannel("TestLiveDataBus", String.class)
+//                .observe(this, new Observer<String>() {
+//                    @Override
+//                    public void onChanged(@Nullable String s) {
+//                        text.setText(s);
+//                    }
+//                });
 
-        boatWave.setSaiHeard(getDrawable(R.drawable.icon_service))
+        boatWave.setSaiHeard(getDrawable(R.drawable.sai_icon_service))
                 .setSaiTitle("你好")
                 .setSaiEdit();
 
+        vSaiEdit.setInputHint("请输入地址")
+                .setInputIcon(R.drawable.delete)
+                .setInputTitle("地址")
+                .setInputDefaultText("神盾局")
+//                .setInputTitleHide()
+        ;
+        vSaiText.setInputTitle("电话")
+                .setInputIcon(R.drawable.delete)
+                .setInputText("124353545345");
 
+        String [] d = new String[]{
+                "上海",
+                "北京",
+                "广州",
+                "深圳",
+                "杭州",
+                "青岛",
+                "苏州"
+        };
+        List<String> list =  Arrays.asList(d);
+        vSaiSpinner.setDate(this,list)
+                .setInputTitle("无人机")
+                .setInputIcon(R.drawable.delete)
+                .setInputDefaultText("精灵 3")
+                .setSpinnerClickListener(new SaiSpinner.SpinnerSelectedListener() {
+                    @Override
+                    public void onSelected(int position, Object data) {
+                        DToast.warning(getBaseContext(),(String)data);
+                    }
+                });
+
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text.setText(vSaiEdit.getInputText());
+            }
+        });
+
+        vSwitchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        });
     }
 
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,

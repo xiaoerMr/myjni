@@ -69,8 +69,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+    <com.sai.sailib.view.view.SaiEdit
+        android:id="@+id/sai_edit"
+        android:layout_below="@+id/boat_wave"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:sai_input_type="number"
+        app:sai_input_hint="输入地址"
+        />
+    <com.sai.sailib.view.view.SaiText
+        android:id="@+id/sai_view_text"
+        android:layout_below="@+id/sai_edit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+    <com.sai.sailib.view.view.SaiSpinner
+        android:id="@+id/sai_spinner"
+        android:layout_below="@+id/sai_view_text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
 
 
+    <com.sai.sailib.button.SwitchButton
+        android:layout_below="@+id/sai_spinner"
+        android:id="@+id/sb_custom"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:kswBackRadius="2dp"
+        app:kswThumbRadius="2dp"
+        app:kswThumbRangeRatio="2.2"
+        app:kswTintColor="#49416E"
+        app:kswTextOff="Off"
+        app:kswTextOn="On"
+        />
+
+
+    <com.sai.sailib.loading.MKLoader
+        android:id="@+id/state_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:mk_type="TwinFishesSpinner"
+        app:mk_color="@color/colorAccent"/>
 
 <TextView
         android:id="@+id/text"

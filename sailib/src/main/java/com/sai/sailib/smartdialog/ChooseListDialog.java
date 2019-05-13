@@ -28,7 +28,7 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
     private boolean mKeepChosenPosByLast = true;
     private boolean mUseCubeMarkWhenMultipleChoose;
     @ColorInt
-    private int mCheckMarkColor = Utils.getColorFromRes(R.color.colorPrimary);
+    private int mCheckMarkColor = Utils.getColorFromRes(R.color.smairColorPrimary);
 
     protected ListView mListView;
 

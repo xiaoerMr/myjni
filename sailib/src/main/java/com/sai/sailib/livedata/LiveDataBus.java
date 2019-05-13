@@ -1,4 +1,5 @@
-package com.sai.myjni.livedata;
+package com.sai.sailib.livedata;
+
 
 
 import android.arch.lifecycle.MutableLiveData;
@@ -27,8 +28,11 @@ import java.util.Map;
  *      LiveData可以感知被绑定的组件的生命周期，只有在活跃状态才会通知数据变化。
  * 5: 实时数据刷新，当组件处于活跃状态或者从不活跃状态到活跃状态时总是能收到最新的数据。
  * 6: 解决Configuration Change问题，在屏幕发生旋转或者被回收再次启动，立刻就能收到最新的数据。
+ *
+ * @author dianxiaoer
  */
 public class LiveDataBus {
+
     private static LiveDataBus liveDataBus;
     private final Map<String, MutableLiveData<Object>> bus;
 
@@ -47,7 +51,7 @@ public class LiveDataBus {
         return liveDataBus;
     }
 
-    public <T>MutableLiveData<T> getChannel(String name,Class<T> type){
+    public <T> MutableLiveData<T> getChannel(String name, Class<T> type){
         if (!bus.containsKey(name)) {
             bus.put(name, new MutableLiveData<>());
         }
@@ -56,15 +60,5 @@ public class LiveDataBus {
     }
     public MutableLiveData<Object> getChannel(String name) {
         return getChannel(name, Object.class);
-    }
-
-
-    public void setBus(String name,Object bus) {
-        MutableLiveData<Object> data = LiveDataBus.getInstance().getChannel(name);
-        if(null == data){
-        }else {
-            data.setValue("我是 DiaLogActivity 发送的事件");
-        }
-//        return getChannel(name, Object.class);
     }
 }

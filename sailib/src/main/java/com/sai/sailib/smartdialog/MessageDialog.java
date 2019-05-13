@@ -42,7 +42,7 @@ public abstract class MessageDialog<D extends NormalDialog> extends BranchDialog
 
     public MessageDialog() {
         mConfirmLabel = "确定";
-        mConfirmLabelColor = Utils.getColorFromRes(R.color.colorPrimary);
+        mConfirmLabelColor = Utils.getColorFromRes(R.color.smairColorPrimary);
     }
 
     public D message(CharSequence msg) {

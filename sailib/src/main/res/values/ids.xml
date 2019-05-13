@@ -5,4 +5,8 @@
     <item name="sai_text" type="id"/>
     <item name="sai_title" type="id"/>
 
+    <item name="smart_show_dialog_confirm_btn" type="id" />
+    <item name="smart_show_dialog_cancel_btn" type="id" />
+    <item name="smart_show_dialog_title_view" type="id" />
+    <item name="smart_show_dialog_message_view" type="id" />
 </resources>

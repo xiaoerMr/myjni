@@ -33,7 +33,7 @@ public class InputTextDialog extends SimpleBranchDialog<InputTextDialog> {
         super();
         mTitle = "输入";
         mAtMostInputNum = 20;
-        mInputNumMarkColor = Utils.getColorFromRes(R.color.colorPrimary);
+        mInputNumMarkColor = Utils.getColorFromRes(R.color.smairColorPrimary);
     }
 
     public InputTextDialog textOfDefaultFill(CharSequence defaultText) {

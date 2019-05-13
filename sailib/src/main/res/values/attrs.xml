@@ -162,7 +162,19 @@
 
         <attr name="ic_sai_delete" format="reference"/>
         <attr name="ic_sai_heard" format="reference"/>
-      <attr name="sai_title" format="string"/>
+        <attr name="sai_title" format="string"/>
         <attr name="sai_text" format="string"/>
+    </declare-styleable>
+    <!--自定义EditText-->
+    <declare-styleable name="SaiEdit">
+        <attr name="sai_ic_delete" format="reference"/>
+        <attr name="sai_ic_heard" format="reference"/>
+        <attr name="sai_input_title" format="string"/>
+        <attr name="sai_input_hint" format="string"/>
+        <attr name="sai_input_text" format="string"/>
+        <attr name="sai_input_type" format="enum">
+            <enum name="text" value="0"/>
+            <enum name="number" value="1"/>
+        </attr>
     </declare-styleable>
 </resources>
