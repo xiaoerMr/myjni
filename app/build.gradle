@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.1.70.android'
     implementation "me.weyye.hipermission:${hipermission_version}"
     implementation 'me.jessyan:autosize:1.1.2'
+    implementation 'android.arch.lifecycle:common-java8:1.1.1'
+    implementation 'android.arch.lifecycle:livedata:1.1.1'
     //    implementation(name: 'sailib-release', ext: 'aar')
     //屏幕适配
     //    implementation(name: 'dutillibrary-release', ext: 'aar')

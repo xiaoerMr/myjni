@@ -11,14 +11,16 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-
 import com.sai.sailib.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
+public class SingleBigTextDialog extends SimpleBranchDialog<SingleBigTextDialog> {
+
+
+
     public static final int CHOICE_MODE_SINGLE = 0;
     public static final int CHOICE_MODE_MULTIPLE = 1;
     private List mItems = new ArrayList();
@@ -32,10 +34,10 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
 
     protected ListView mListView;
 
-    protected ChooseListAdapter mChooseListAdapter;
+    protected SingleBigTextDialogListAdapter mChooseListAdapter;
     private boolean isScrollBar = false;
 
-    public ChooseListDialog items(List items) {
+    public SingleBigTextDialog items(List items) {
         if (!mItems.equals(items)) {
             mItems.clear();
             mItems.addAll(items);
@@ -44,7 +46,12 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
         return this;
     }
 
-    public ChooseListDialog items(Object[] items) {
+    @Override
+    protected int provideBodyLayout() {
+        return R.layout.smart_big_text_list_dialog;
+    }
+
+    public SingleBigTextDialog items(Object[] items) {
         items(Arrays.asList(items));
         return this;
     }
@@ -68,7 +75,7 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
     }
 
 
-    public ChooseListDialog useCubeMarkWhenMultipleChoice(boolean useCubeMarkWhenMultipleChoose) {
+    public SingleBigTextDialog useCubeMarkWhenMultipleChoice(boolean useCubeMarkWhenMultipleChoose) {
         mUseCubeMarkWhenMultipleChoose = useCubeMarkWhenMultipleChoose;
         applyUseCubeMark(mNestedDialog);
         return this;
@@ -81,7 +88,7 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
     }
 
 
-    public ChooseListDialog choiceMode(int choiceMode) {
+    public SingleBigTextDialog choiceMode(int choiceMode) {
         switch (choiceMode) {
             case CHOICE_MODE_SINGLE:
                 mChoiceMode = ListView.CHOICE_MODE_SINGLE;
@@ -101,7 +108,7 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
         }
     }
 
-    public ChooseListDialog checkMarkPos(int pos) {
+    public SingleBigTextDialog checkMarkPos(int pos) {
         if (pos != Gravity.LEFT && pos != Gravity.RIGHT) {
             pos = Gravity.LEFT;
         }
@@ -116,7 +123,7 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
         }
     }
 
-    public ChooseListDialog checkMarkColor(@ColorInt int color) {
+    public SingleBigTextDialog checkMarkColor(@ColorInt int color) {
         mCheckMarkColor = color;
         applyCheckMarkColor(mNestedDialog);
         return this;
@@ -128,28 +135,23 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
         }
     }
 
-    public ChooseListDialog checkMarkColorRes(@ColorRes int colorRes) {
+    public SingleBigTextDialog checkMarkColorRes(@ColorRes int colorRes) {
         return checkMarkColor(Utils.getColorFromRes(colorRes));
     }
 
-    public ChooseListDialog defaultChoosePos(int... choosePos) {
+    public SingleBigTextDialog defaultChoosePos(int... choosePos) {
         mDefaultChoosePos = choosePos;
         return this;
     }
 
-    public ChooseListDialog keepChosenPosByLast(boolean keep) {
+    public SingleBigTextDialog keepChosenPosByLast(boolean keep) {
         mKeepChosenPosByLast = keep;
         return this;
     }
 
-    public ChooseListDialog setShowScrollBar(boolean isScrollBar){
+    public SingleBigTextDialog setShowScrollBar(boolean isScrollBar){
         this.isScrollBar = isScrollBar;
         return this;
-    }
-
-    @Override
-    protected int provideBodyLayout() {
-        return R.layout.smart_show_list_dialog;
     }
 
     @Override
@@ -161,7 +163,7 @@ public class ChooseListDialog extends SimpleBranchDialog<ChooseListDialog> {
         mListView.setSelector(new ColorDrawable(Color.TRANSPARENT));
         mListView.setDivider(new ColorDrawable(Color.parseColor("#cccccc")));
         mListView.setDividerHeight(Utils.dpToPx(0.5f));
-        mChooseListAdapter = new ChooseListAdapter();
+        mChooseListAdapter = new SingleBigTextDialogListAdapter();
         mListView.setVerticalScrollBarEnabled(isScrollBar);
         mListView.setAdapter(mChooseListAdapter);
     }

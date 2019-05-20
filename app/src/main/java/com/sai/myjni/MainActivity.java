@@ -1,6 +1,7 @@
 package com.sai.myjni;
 
 import android.Manifest;
+import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -9,11 +10,12 @@ import android.widget.TextView;
 import com.sai.myjni.base.BaseActivity;
 import com.sai.myjni.dia.DiaLogActivity;
 import com.sai.myjni.file.ReadFileActivity;
+import com.sai.myjni.livedata.LiveDataBus;
+import com.sai.myjni.livedata.SaiLiveDateBus;
 import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
 import com.sai.sailib.button.SwitchButton;
-import com.sai.sailib.livedata.LiveDataBus;
 import com.sai.sailib.toast.DToast;
 import com.sai.sailib.view.SaiEditView;
 import com.sai.sailib.view.view.SaiEdit;
@@ -64,6 +66,15 @@ public class MainActivity extends BaseActivity {
 //                        text.setText(s);
 //                    }
 //                });
+        SaiLiveDateBus.SingletonHolder()
+                .with("TestLiveDataBus", String.class)
+                .observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(@Nullable String s) {
+                        text.setText(s);
+                    }
+                });
+
 
         boatWave.setSaiHeard(getDrawable(R.drawable.sai_icon_service))
                 .setSaiTitle("你好")
@@ -86,13 +97,25 @@ public class MainActivity extends BaseActivity {
                 "深圳",
                 "杭州",
                 "青岛",
-                "苏州"
+                "苏州",
+                "北京",
+                "广州",
+                "深圳",
+                "杭州",
+                "青岛",
+                "苏州",
+                "北京",
+                "广州",
+                "深圳",
+                "杭州",
         };
         List<String> list =  Arrays.asList(d);
-        vSaiSpinner.setDate(this,list)
+        vSaiSpinner
                 .setInputTitle("无人机")
+                .setShowScrollBar(false)
                 .setInputIcon(R.drawable.delete)
                 .setInputDefaultText("精灵 3")
+                .setDate(this,list)
                 .setSpinnerClickListener(new SaiSpinner.SpinnerSelectedListener() {
                     @Override
                     public void onSelected(int position, Object data) {
@@ -117,7 +140,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,
             R.id.read_file, R.id.dialog, R.id.thread,
-            R.id.toutiao})
+            R.id.toutiao,R.id.stateview})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.jni:
@@ -137,9 +160,13 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.thread:
                 JumpActivity(ThreadActivity.class);
+
                 break;
             case R.id.toutiao:
                 JumpActivity(TouTiaoActivity.class);
+                break;
+            case R.id.stateview:
+                JumpActivity(StateViewActivity.class);
                 break;
             default:
         }

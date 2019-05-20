@@ -23,6 +23,7 @@ public class ClickListDialog extends TitleBranchDialog<ClickListDialog> {
     private ListView mListView;
     private ClickListAdapter mClickListAdapter;
     private OnItemClickListener mOnItemClickListener;
+    private boolean isScrollBar = false;
 
     public ClickListDialog items(List items) {
         if (!mItems.equals(items)) {
@@ -81,6 +82,7 @@ public class ClickListDialog extends TitleBranchDialog<ClickListDialog> {
         mListView.setSelector(new ColorDrawable(Color.TRANSPARENT));
         mListView.setDivider(new ColorDrawable(Color.parseColor("#cccccc")));
         mListView.setDividerHeight(Utils.dpToPx(0.5f));
+        mListView.setVerticalScrollBarEnabled(isScrollBar);
         mClickListAdapter = new ClickListAdapter();
         mListView.setAdapter(mClickListAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,6 +95,12 @@ public class ClickListDialog extends TitleBranchDialog<ClickListDialog> {
                 }
             }
         });
+
+    }
+
+    public ClickListDialog setShowScrollBar(boolean isScrollBar){
+        this.isScrollBar = isScrollBar;
+        return this;
     }
 
     @Override

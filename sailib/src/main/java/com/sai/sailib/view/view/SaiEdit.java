@@ -128,7 +128,6 @@ public class SaiEdit extends RelativeLayout {
     public SaiEdit setInputDefaultText(String text){
         vInputEdit.setText(text);
         if (vInputDelete.getVisibility() != GONE) {
-            DLog.e("-----");
             vInputDelete.setVisibility(GONE);
         }
         return this;

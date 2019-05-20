@@ -39,6 +39,9 @@ public class SaiSpinner extends RelativeLayout {
     private Fragment fragment;
     private  ObjectAnimator rotation;
     private List date;
+    private boolean isShow = false;
+
+
 
     public SaiSpinner(Context context) {
         this(context, null);
@@ -145,6 +148,11 @@ public class SaiSpinner extends RelativeLayout {
         return this;
     }
 
+    public SaiSpinner setShowScrollBar(boolean show) {
+        isShow = show;
+        return this;
+    }
+
     private void initDialog(List date) {
         this.date = date;
         if (VerificationUtils.isEmptyList(date)) {
@@ -153,6 +161,7 @@ public class SaiSpinner extends RelativeLayout {
 
         dialog = new ClickListDialog()
                 .itemCenter(true)
+                .setShowScrollBar(isShow)
                 .items(date)
                 .itemClickListener(new ClickListDialog.OnItemClickListener() {
                     @Override

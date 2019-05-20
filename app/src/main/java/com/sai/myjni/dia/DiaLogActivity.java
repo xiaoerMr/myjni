@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
-import com.sai.sailib.livedata.LiveDataBus;
+import com.sai.myjni.livedata.SaiLiveDateBus;
 import com.sai.sailib.smartdialog.ChooseListDialog;
 import com.sai.sailib.smartdialog.ChooseResult;
 import com.sai.sailib.smartdialog.ClickListDialog;
@@ -14,6 +14,7 @@ import com.sai.sailib.smartdialog.DialogBtnClickListener;
 import com.sai.sailib.smartdialog.EnsureDialog;
 import com.sai.sailib.smartdialog.InputTextDialog;
 import com.sai.sailib.smartdialog.NotificationDialog;
+import com.sai.sailib.smartdialog.SingleBigTextDialog;
 import com.sai.sailib.smartdialog.SmartDialog;
 import com.sai.sailib.toast.DToast;
 
@@ -58,17 +59,51 @@ public class DiaLogActivity extends BaseActivity {
                 break;
             //多选
             case R.id.button5:
+                new SingleBigTextDialog()
+                        .setShowScrollBar(true)
+                        .title("请选择语言")
+                        .defaultChoosePos(0)
+                        .checkMarkPos(Gravity.LEFT)
+                        .checkMarkColorRes(R.color.smairtColorPrimaryDark)
+                        .choiceMode(ChooseListDialog.CHOICE_MODE_SINGLE)
+                        .keepChosenPosByLast(true)
+                        .items(new String[]{
+                                "上海:\n外媒指出，百思买等商店此前曾出现过智能手机配件自动售货机，但像Straight Talk这样的公司五年前已推出类似的设备。消费者可以在美国一些沃尔玛商店的自动售货机上购买自己的Straight Talk智能手机。摩托罗拉在2006年也曾推出手机自动售货机",
+                                "北京:\n小米近日推出了第一款智能手机自动售货机。第一个“Mi Express”自动售货机位于班加罗尔的Manyata科技园区。消费者可以使用UPI帐户（智能手机支付）、现金、借记卡、信用卡等方式进行支付",
+                                "广州\n:目前印度是几个大型智能手机品牌的主要战场。它也是一种“狂野西部”环境，许多智能手机厂商在该市场难以取得进展，例如苹果公司。一加超越苹果和三星，成为2018年印度高端手机市场销量第一的品牌",
+                                "深圳",
+                                "杭州",
+                                "青岛",
+                                "苏州"
+                        })
+                        .confirmBtn("选好了", new DialogBtnClickListener() {
+                            @Override
+                            public void onBtnClick(SmartDialog dialog, int which, Object data) {
+                                dialog.dismiss();
+                                ChooseResult chooseResult = (ChooseResult) data;
+                                String showMsg = "pos:" + Arrays.toString(chooseResult.getChoosePositions())
+                                        + "\n\n"
+                                        + "items:" + Arrays.toString(chooseResult.getChooseItems());
+                                DToast.success(getBaseContext(),showMsg);
+                            }
+                        })
+                        .showInActivity(this);
                 break;
             //测试
             case R.id.testlivedatabus:
-//                LiveDataBus.getInstance().getChannel("")
-//                        .getChannel("TestLiveDataBus").setValue("我是 DiaLogActivity 发送的事件");
+//                LiveDataBus.getInstance()
+//                        .getChannel("TestLiveDataBus")
+//                        .setValue("我是 DiaLogActivity 发送的事件");
+                SaiLiveDateBus.SingletonHolder()
+                        .with("TestLiveDataBus")
+                        .setValue("我是Sai DiaLogActivity 发送的事件");
                 break;
             // smairt 提示
             case R.id.button6:
               new NotificationDialog()
                       .message("重置成功")
                       .showInActivity(this);
+
                 break;
             // smairt 选择提示
             case R.id.button7:
@@ -90,9 +125,9 @@ public class DiaLogActivity extends BaseActivity {
                 new ClickListDialog()
                         .itemCenter(true)
                         .items(new String[]{
-                                "回复",
+                                "回复刻减刻减肥了升级附加赛刻减肥了升级附加赛佛;爱上刻减肥了升级附加赛佛;爱上飞机as浪费假设了的方式飞机as浪费假设了的方式佛;爱上飞机as浪费假设了的方式肥了升级附加赛佛;爱上飞机as浪费假设了的方式",
                                 "转发",
-                                "私信回复",
+                                "私信回复刻减肥刻减肥了升级附加赛佛;爱上飞机as浪刻减肥了升级附加赛佛;爱上飞机as浪费假设了的方式费假设了的方式了升刻减肥了升级附加赛佛;爱上飞机as浪费假设了的方式级附加赛佛;爱上飞机as浪费假设了的方式",
                                 "复制",
                                 "举报"
                         })
@@ -112,8 +147,10 @@ public class DiaLogActivity extends BaseActivity {
                         .defaultChoosePos(0, 1)
                         .choiceMode(ChooseListDialog.CHOICE_MODE_MULTIPLE)
                         .keepChosenPosByLast(true)
+                        .setShowScrollBar(true)
                         .items(new String[]{
-                                "上海",
+                                "上海:司法局啊立刻减肥了升级附加刻减肥了升级附加赛佛;爱上飞机as浪费假设了的方式赛佛;爱上飞机as浪费假设了的刻减肥了升级附加赛佛;爱上飞机as浪费假设了的方式方式地方是伐啦交首付傻了点积分",
+                                "北京:司法局啊立刻减肥了升级附加刻减肥了升级附加赛佛;爱上飞机as浪费假设了的方式赛佛;爱上飞机as浪费假设了的方式刻减肥了升级附加赛佛;爱上飞机as浪费假设了的方式地方是伐啦交首付傻了点积分",
                                 "北京",
                                 "广州",
                                 "深圳",
@@ -144,12 +181,9 @@ public class DiaLogActivity extends BaseActivity {
                         .choiceMode(ChooseListDialog.CHOICE_MODE_SINGLE)
                         .keepChosenPosByLast(true)
                         .items(new String[]{
-                                "Java",
-                                "Kotlin",
-                                "C",
-                                "C++",
-                                "C#",
-                                "Html"
+                                "Java:",
+                                "C++:"
+
                         })
                         .confirmBtn("确定", new DialogBtnClickListener() {
                             @Override

@@ -60,12 +60,12 @@ public class DialogUtlis extends  DialogFragment{
 
 //        LayoutInflater inflater = getActivity().getLayoutInflater();
 //        View view = inflater.inflate(R.layout.fragment_dialog, null);
-//        Dialog dialog = new Dialog(getActivity());
+//        Dialog SingleBigTextDialog = new Dialog(getActivity());
 //        // 设置主题的构造方法
-//        // Dialog dialog = new Dialog(getActivity(), R.style.CustomDialog);
-//        dialog.setContentView(view);
+//        // Dialog SingleBigTextDialog = new Dialog(getActivity(), R.style.CustomDialog);
+//        SingleBigTextDialog.setContentView(view);
 //        // Do Someting
-//        return dialog;
+//        return SingleBigTextDialog;
 
 
     }

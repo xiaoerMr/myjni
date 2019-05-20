@@ -74,7 +74,7 @@ public final class SmartShow {
 //                    sTopbarCallback.recycleOnDestroy(activity);
 //                }
 //                if (sDialogCallback != null) {
-//                    EasyLogger.d("recycle dialog");
+//                    EasyLogger.d("recycle SingleBigTextDialog");
 //                    sDialogCallback.recycleOnDestroy(activity);
 //                }
 //            }

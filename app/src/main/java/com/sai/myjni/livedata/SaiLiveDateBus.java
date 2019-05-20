@@ -1,4 +1,4 @@
-package com.sai.sailib.livedata;
+package com.sai.myjni.livedata;
 
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class SaiLiveDateBus {
 
     private final Map<String, BusMutableLiveData<Object>> bus;
-    private static  SaiLiveDateBus DEFAULT_BUS;
+    private static SaiLiveDateBus DEFAULT_BUS;
 
     private SaiLiveDateBus() {
         bus = new HashMap<>();

@@ -59,6 +59,14 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="头条屏幕适配" />
+    <Button
+        android:id="@+id/stateview"
+        android:layout_toEndOf="@+id/toutiao"
+        android:layout_below="@+id/jni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="多状态 view" />
 
 
 

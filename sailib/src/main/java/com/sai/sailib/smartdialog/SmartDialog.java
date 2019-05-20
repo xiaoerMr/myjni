@@ -33,11 +33,11 @@ public abstract class SmartDialog<NestedDialog extends Dialog> {
         }
 
         if (mNestedDialog == null) {
-            mNestedDialog = Utils.requireNonNull(createDialog(activity), "the method createDialog must return a non-null dialog!");
-            DLog.d("create a new dialog:\n " + mNestedDialog);
+            mNestedDialog = Utils.requireNonNull(createDialog(activity), "the method createDialog must return a non-null SingleBigTextDialog!");
+            DLog.d("create a new SingleBigTextDialog:\n " + mNestedDialog);
         } else {
             resetDialogWhenShowAgain(mNestedDialog);
-            DLog.d("reuse dialog:\n " + mNestedDialog);
+            DLog.d("reuse SingleBigTextDialog:\n " + mNestedDialog);
         }
 
         if (mNestedDialog != null) {
@@ -45,7 +45,7 @@ public abstract class SmartDialog<NestedDialog extends Dialog> {
                 mNestedDialog.show();
                 return true;
             } catch (WindowManager.BadTokenException e) {
-                DLog.e("BadToken has happened when show dialog: \n" + mNestedDialog.getClass().getSimpleName());
+                DLog.e("BadToken has happened when show SingleBigTextDialog: \n" + mNestedDialog.getClass().getSimpleName());
                 return false;
             }
         }
@@ -70,7 +70,7 @@ public abstract class SmartDialog<NestedDialog extends Dialog> {
             mNestedDialog.dismiss();
             return true;
         } catch (IllegalStateException e) {
-            DLog.d("IllegalStateException has happened when show dialog:\n" + mNestedDialog);
+            DLog.d("IllegalStateException has happened when show SingleBigTextDialog:\n" + mNestedDialog);
             return false;
         }
     }

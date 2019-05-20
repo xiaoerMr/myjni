@@ -9,4 +9,10 @@
     <item name="smart_show_dialog_cancel_btn" type="id" />
     <item name="smart_show_dialog_title_view" type="id" />
     <item name="smart_show_dialog_message_view" type="id" />
+
+    <!--多状态 view-->
+    <item name="empty_retry_view" type="id"/>
+    <item name="no_network_retry_view" type="id"/>
+    <item name="error_retry_view" type="id"/>
+
 </resources>
