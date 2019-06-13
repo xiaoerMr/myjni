@@ -53,8 +53,7 @@
             android:id="@+id/status_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            app:emptyView="@layout/layout_empty_view">
+            android:layout_weight="1">
             <TextView
                 android:id="@+id/text"
                 android:layout_width="match_parent"

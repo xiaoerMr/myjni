@@ -43,7 +43,7 @@
         android:id="@+id/state"
         android:layout_width="93dp"
         android:layout_height="wrap_content"
-        android:text="状态"
+        android:text="重连"
         app:layout_constraintBottom_toBottomOf="@+id/end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

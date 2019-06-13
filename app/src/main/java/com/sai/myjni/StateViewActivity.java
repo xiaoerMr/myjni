@@ -47,9 +47,11 @@ public class StateViewActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.empty:
                 statusView.showEmptyView();
+                DToast.warning(getBaseContext(),"空");
                 break;
             case R.id.no:
                 statusView.showNoNetwork();
+                DToast.warning(getBaseContext(),"网络");
                 break;
             case R.id.error:
                 statusView.showErrorView();
@@ -62,17 +64,12 @@ public class StateViewActivity extends BaseActivity {
                 break;
             case R.id.loading:
                 statusView.showLoadingView();
+                DToast.warning(getBaseContext(),"加载中");
                 break;
             case R.id.show:
                 statusView.showContent();
+                DToast.warning(getBaseContext(),"内容");
                 break;
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }

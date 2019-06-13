@@ -128,9 +128,8 @@ public class MultipleStatusView extends RelativeLayout {
         mViewStatus = STATUS_NO_NETWORK;
         if (null == vNoNetWorkView) {
             vNoNetWorkView = view;
-            View noNetworkRetryView = vNoNetWorkView.findViewById(R.id.no_network_retry_view);
-            if (null != mOnRetryClickListener && null != noNetworkRetryView) {
-                noNetworkRetryView.setOnClickListener(mOnRetryClickListener);
+            if (null != mOnRetryClickListener ) {
+                vNoNetWorkView.setOnClickListener(mOnRetryClickListener);
             }
             mOtherIds.add(vNoNetWorkView.getId());
             mOtherView.put("vNoNetWorkView",vNoNetWorkView);
@@ -152,9 +151,8 @@ public class MultipleStatusView extends RelativeLayout {
         DLog.e("---","错误 id=>"+ view.getId());
         if (null == vErrorView) {
             vErrorView = view;
-            View emptyRetryView = vErrorView.findViewById(R.id.error_retry_view);
-            if (null != mOnRetryClickListener && null != emptyRetryView) {
-                emptyRetryView.setOnClickListener(mOnRetryClickListener);
+            if (null != mOnRetryClickListener ) {
+                vErrorView.setOnClickListener(mOnRetryClickListener);
             }
             mOtherIds.add(vErrorView.getId());
             mOtherView.put("vErrorView",vErrorView);
@@ -213,9 +211,8 @@ public class MultipleStatusView extends RelativeLayout {
         if (null == vEmptyView) {
             vEmptyView = view;
             //设置点击事件 点击重新加载
-            View emptyRetryView = vEmptyView.findViewById(R.id.empty_retry_view);
-            if (null != mOnRetryClickListener && null != emptyRetryView) {
-                emptyRetryView.setOnClickListener(mOnRetryClickListener);
+            if (null != mOnRetryClickListener ) {
+                vEmptyView.setOnClickListener(mOnRetryClickListener);
             }
 
             //添加到根布局

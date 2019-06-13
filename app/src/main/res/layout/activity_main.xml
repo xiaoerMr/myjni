@@ -41,6 +41,13 @@
         android:textAllCaps="false"
         android:layout_below="@+id/jni"
         android:text="弹出框" />
+    <Button
+        android:id="@+id/tree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_below="@+id/dialog"
+        android:text="树" />
 
     <Button
         android:id="@+id/thread"
@@ -73,7 +80,7 @@
 
     <com.sai.sailib.view.SaiEditView
         android:id="@+id/boat_wave"
-        android:layout_below="@+id/toutiao"
+        android:layout_below="@+id/tree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -90,6 +97,7 @@
         android:layout_below="@+id/sai_edit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        app:sai_input_text="收代理费"
         />
     <com.sai.sailib.view.view.SaiSpinner
         android:id="@+id/sai_spinner"
@@ -116,6 +124,7 @@
 
 
     <com.sai.sailib.loading.MKLoader
+        android:visibility="gone"
         android:id="@+id/state_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,5 +139,13 @@
         android:padding="@dimen/ksw_md_thumb_shadow_inset"
         android:layout_alignParentBottom="true"
         android:text="测试从'弹出框'发送的事件" />
+
+    <ImageView
+        android:layout_below="@+id/sb_custom"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        app:srcCompat="@drawable/boat" />
 
 </RelativeLayout>
