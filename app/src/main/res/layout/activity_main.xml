@@ -41,6 +41,8 @@
         android:textAllCaps="false"
         android:layout_below="@+id/jni"
         android:text="弹出框" />
+
+
     <Button
         android:id="@+id/tree"
         android:layout_width="wrap_content"
@@ -48,6 +50,15 @@
         android:textAllCaps="false"
         android:layout_below="@+id/dialog"
         android:text="树" />
+
+    <Button
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_below="@+id/dialog"
+        android:layout_toEndOf="@+id/tree"
+        android:text="地图" />
 
     <Button
         android:id="@+id/thread"

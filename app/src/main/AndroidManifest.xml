@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TreeActivity"
+        <activity android:name=".map.MapActivity"/>
+        <activity
+            android:name=".TreeActivity"
             android:theme="@style/noTool" />
         <activity android:name=".StateViewActivity" />
         <activity android:name=".TouTiaoActivity" />
@@ -33,8 +35,7 @@
         <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".dia.DiaLogActivity" />
         <activity android:name=".file.ReadFileActivity" />
-        <activity
-            android:name=".netstate.NetStateActivity" />
+        <activity android:name=".netstate.NetStateActivity" />
         <activity android:name=".socket.SocketActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -44,7 +45,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".JniActivity" />
-        <service android:name=".socket.SocketService"/>
+
+        <service android:name=".socket.SocketService" />
+
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="6a77947e5528ef632f74188e61c8863d">
+        </meta-data>
     </application>
 
 </manifest>

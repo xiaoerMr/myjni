@@ -14,6 +14,7 @@ import com.sai.myjni.base.BaseActivity;
 import com.sai.myjni.dia.DiaLogActivity;
 import com.sai.myjni.file.ReadFileActivity;
 import com.sai.myjni.livedata.SaiLiveDateBus;
+import com.sai.myjni.map.MapActivity;
 import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
@@ -173,7 +174,8 @@ public class MainActivity extends BaseActivity {
 
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,
             R.id.read_file, R.id.dialog, R.id.thread,
-            R.id.toutiao, R.id.stateview, R.id.tree})
+            R.id.toutiao, R.id.stateview, R.id.tree,
+            R.id.map})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.jni:
@@ -203,6 +205,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tree:
                 JumpActivity(TreeActivity.class);
+                break;
+            case R.id.map:
+                JumpActivity(MapActivity.class);
                 break;
             default:
         }

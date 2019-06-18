@@ -36,7 +36,7 @@
         />
 
     <ImageView
-        android:id="@+id/input_delete"
+        android:id="@+id/input_more"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="4dp"

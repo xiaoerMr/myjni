@@ -5,16 +5,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -72,7 +69,7 @@ public class SaiSpinner extends RelativeLayout {
         vInputImg = findViewById(R.id.input_img);
         vInputTitle = findViewById(R.id.input_title);
         vInputText = findViewById(R.id.input_text);
-        vInputDelete = findViewById(R.id.input_delete);
+        vInputDelete = findViewById(R.id.input_more);
 
         rotation = ObjectAnimator.ofFloat(vInputDelete,  "rotation", 0f, 360f);
         rotation.setInterpolator(new BounceInterpolator());

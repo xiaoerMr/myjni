@@ -16,7 +16,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
+        initView(savedInstanceState);
     }
+
+    protected  void initView(Bundle savedInstanceState){}
 
     @Override
     protected void onResume() {

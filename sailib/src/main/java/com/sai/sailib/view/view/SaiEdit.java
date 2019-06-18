@@ -1,6 +1,5 @@
 package com.sai.sailib.view.view;
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -17,15 +16,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sai.sailib.R;
-import com.sai.sailib.log.DLog;
-import com.sai.sailib.toast.DToast;
 
 public class SaiEdit extends RelativeLayout {
 
     private Context context;
     private String strTitle,strHint,strText;
     private int strType;
-    private Drawable icHeard;
+    private Drawable icHeard,icDelete;
     private ImageView vInputImg,vInputDelete;
     private EditText vInputEdit;
     private TextView vInputTitle;
@@ -55,6 +52,7 @@ public class SaiEdit extends RelativeLayout {
         strType = array.getInt(R.styleable.SaiEdit_sai_input_type,0);
 
         icHeard = array.getDrawable(R.styleable.SaiEdit_sai_ic_heard);
+        icDelete = array.getDrawable(R.styleable.SaiEdit_sai_ic_delete);
 
 //        View view = inflate(context, R.layout.input_view_text, this);
         LayoutInflater.from(context).inflate(R.layout.input_view_edit, this);
@@ -71,6 +69,9 @@ public class SaiEdit extends RelativeLayout {
     private void initView() {
         if (icHeard != null) {
             setInputIcon(icHeard);
+        }
+        if (icDelete != null) {
+            setInputDelete(icDelete);
         }
         if (!TextUtils.isEmpty(strTitle)) {
             setInputTitle(strTitle);
@@ -110,8 +111,17 @@ public class SaiEdit extends RelativeLayout {
         setInputIcon(context.getDrawable(id));
         return this;
     }
+
     public SaiEdit setInputIcon(Drawable drawable){
         vInputImg.setBackground(drawable);
+        return this;
+    }
+    public SaiEdit setInputDelete(int id){
+        setInputDelete(context.getDrawable(id));
+        return this;
+    }
+    public SaiEdit setInputDelete(Drawable drawable){
+        vInputDelete.setBackground(drawable);
         return this;
     }
     public SaiEdit setInputTitle(String title){
