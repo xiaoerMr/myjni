@@ -4,8 +4,6 @@ import android.Manifest;
 import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amap.api.maps.AMapUtils;
@@ -18,17 +16,9 @@ import com.sai.myjni.map.MapActivity;
 import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
-import com.sai.sailib.button.SwitchButton;
 import com.sai.sailib.log.DLog;
-import com.sai.sailib.toast.DToast;
-import com.sai.sailib.view.SaiEditView;
-import com.sai.sailib.view.view.SaiEdit;
-import com.sai.sailib.view.view.SaiSpinner;
-import com.sai.sailib.view.view.SaiText;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,18 +31,7 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.text)
     TextView text;
-    @BindView(R.id.boat_wave)
-    SaiEditView boatWave;
-    @BindView(R.id.sai_edit)
-    SaiEdit vSaiEdit;
-    @BindView(R.id.sai_view_text)
-    SaiText vSaiText;
-    @BindView(R.id.sai_spinner)
-    SaiSpinner vSaiSpinner;
-    @BindView(R.id.sb_custom)
-    SwitchButton vSwitchButton;
-    @BindView(R.id.imageView2)
-    ImageView imageV;
+
 
     @Override
     protected int getLayoutId() {
@@ -63,9 +42,6 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         initPermission();
 
-        imageV.setPivotX(imageV.getWidth() / 2);
-        imageV.setPivotY(imageV.getHeight() / 2);
-        imageV.setRotation(90);
 
         //测试从 DiaLogActivity 发送的 消息总线
         //有一个 bug: 先发送事件,后订阅也可以收到事件
@@ -86,67 +62,14 @@ public class MainActivity extends BaseActivity {
                     }
                 });
 
+//        text.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                text.setText(vSaiEdit.getInputText());
+//            }
+//        });
 
-        boatWave.setSaiHeard(getDrawable(R.drawable.sai_icon_service))
-                .setSaiTitle("你好")
-                .setSaiEdit();
 
-        vSaiEdit.setInputHint("请输入地址")
-                .setInputIcon(R.drawable.delete)
-                .setInputTitle("地址")
-                .setInputDefaultText("神盾局")
-//                .setInputTitleHide()
-        ;
-        vSaiText.setInputTitle("电话")
-                .setInputIcon(R.drawable.delete)
-                .setInputText("124353545345");
-
-        String[] d = new String[]{
-                "上海",
-                "北京",
-                "广州",
-                "深圳",
-                "杭州",
-                "青岛",
-                "苏州",
-                "北京",
-                "广州",
-                "深圳",
-                "杭州",
-                "青岛",
-                "苏州",
-                "北京",
-                "广州",
-                "深圳",
-                "杭州",
-        };
-        List<String> list = Arrays.asList(d);
-        vSaiSpinner
-                .setInputTitle("无人机")
-                .setShowScrollBar(false)
-                .setInputIcon(R.drawable.delete)
-                .setInputDefaultText("精灵 3")
-                .setDate(this, list)
-                .setSpinnerClickListener(new SaiSpinner.SpinnerSelectedListener() {
-                    @Override
-                    public void onSelected(int position, Object data) {
-                        DToast.warning(getBaseContext(), (String) data);
-                    }
-                });
-
-        text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                text.setText(vSaiEdit.getInputText());
-            }
-        });
-
-        vSwitchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
 
 //          116.368904, 39.923423   ,
 //          116.387271, 39.922501
@@ -175,7 +98,7 @@ public class MainActivity extends BaseActivity {
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,
             R.id.read_file, R.id.dialog, R.id.thread,
             R.id.toutiao, R.id.stateview, R.id.tree,
-            R.id.map})
+            R.id.map,R.id.view})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.jni:
@@ -208,6 +131,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.map:
                 JumpActivity(MapActivity.class);
+                break;
+            case R.id.view:
+                JumpActivity(SaiViewActivity.class);
                 break;
             default:
         }

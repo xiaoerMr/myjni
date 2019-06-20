@@ -27,8 +27,8 @@ public class SaiSpinner extends RelativeLayout {
 
     private Context context;
     private String strText,strTitle;
-    private Drawable icDelete,icHeard;
-    private ImageView vInputImg, vInputDelete;
+    private Drawable icHeard;
+    private ImageView vInputImg, vInputMore;
     private TextView vInputTitle, vInputText;
     private ClickListDialog dialog;
     private String inputTitle;
@@ -62,16 +62,15 @@ public class SaiSpinner extends RelativeLayout {
         strTitle = array.getString(R.styleable.SaiEdit_sai_input_title);
         strText = array.getString(R.styleable.SaiEdit_sai_input_text);
 
-        icDelete = array.getDrawable(R.styleable.SaiEdit_sai_ic_delete);
         icHeard = array.getDrawable(R.styleable.SaiEdit_sai_ic_heard);
 
         LayoutInflater.from(context).inflate(R.layout.input_view_spinner, this);
         vInputImg = findViewById(R.id.input_img);
         vInputTitle = findViewById(R.id.input_title);
         vInputText = findViewById(R.id.input_text);
-        vInputDelete = findViewById(R.id.input_more);
+        vInputMore = findViewById(R.id.input_more);
 
-        rotation = ObjectAnimator.ofFloat(vInputDelete,  "rotation", 0f, 360f);
+        rotation = ObjectAnimator.ofFloat(vInputMore,  "rotation", 0f, 360f);
         rotation.setInterpolator(new BounceInterpolator());
         rotation.setDuration(1200);
         initView();
@@ -88,7 +87,7 @@ public class SaiSpinner extends RelativeLayout {
             setInputDefaultText(strText);
         }
 
-        vInputDelete.setOnClickListener(new OnClickListener() {
+        vInputMore.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if ( !VerificationUtils.isEmptyList(date) && dialog != null) {

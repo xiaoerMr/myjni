@@ -10,12 +10,14 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sai.sailib.R;
+import com.sai.sailib.log.DLog;
 
 public class SaiEdit extends RelativeLayout {
 
@@ -26,6 +28,8 @@ public class SaiEdit extends RelativeLayout {
     private ImageView vInputImg,vInputDelete;
     private EditText vInputEdit;
     private TextView vInputTitle;
+    private RelativeLayout vInput;
+    private int minHeight;
 
     public SaiEdit(Context context) {
         this(context, null);
@@ -49,24 +53,26 @@ public class SaiEdit extends RelativeLayout {
         strText = array.getString(R.styleable.SaiEdit_sai_input_text);
         strTitle = array.getString(R.styleable.SaiEdit_sai_input_title);
         strHint = array.getString(R.styleable.SaiEdit_sai_input_hint);
-        strType = array.getInt(R.styleable.SaiEdit_sai_input_type,0);
+        strType = array.getInt(R.styleable.SaiEdit_sai_input_type,-1);
 
         icHeard = array.getDrawable(R.styleable.SaiEdit_sai_ic_heard);
         icDelete = array.getDrawable(R.styleable.SaiEdit_sai_ic_delete);
-
+        minHeight = array.getDimensionPixelSize(R.styleable.SaiEdit_sai_min_height, -1);
 //        View view = inflate(context, R.layout.input_view_text, this);
         LayoutInflater.from(context).inflate(R.layout.input_view_edit, this);
         vInputImg = findViewById(R.id.input_img);
         vInputTitle = findViewById(R.id.input_title);
         vInputEdit = findViewById(R.id.input_edit);
         vInputDelete = findViewById(R.id.input_delete);
+        vInput = findViewById(R.id.input);
 
         initView();
-//        addView(view);
-        invalidate();
     }
 
     private void initView() {
+        if (minHeight>0) {
+            vInputEdit.setMinimumHeight(minHeight);
+        }
         if (icHeard != null) {
             setInputIcon(icHeard);
         }
@@ -92,17 +98,18 @@ public class SaiEdit extends RelativeLayout {
         setInputListener();
 
         switch (strType){
-            case 0:
-                vInputEdit.setInputType(InputType.TYPE_CLASS_TEXT);
+            case 0://text
+                vInputEdit.setInputType(InputType.TYPE_CLASS_TEXT );
                 break;
-            case 1:
+            case 1://number
                 vInputEdit.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                 break;
-            default:
-                vInputEdit.setInputType(InputType.TYPE_CLASS_TEXT);
+            case 2://number_abc 数字和字母 符号
+                vInputEdit.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD  );
+                break;
         }
-
         setInputFocusChangeListener();
+
     }
 
 

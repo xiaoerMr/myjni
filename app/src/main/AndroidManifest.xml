@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".map.MapActivity"/>
+        <activity android:name=".SaiViewActivity"></activity>
+        <activity android:name=".map.MapActivity" />
         <activity
             android:name=".TreeActivity"
             android:theme="@style/noTool" />
@@ -48,8 +49,9 @@
 
         <service android:name=".socket.SocketService" />
 
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="6a77947e5528ef632f74188e61c8863d">
-        </meta-data>
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="6a77947e5528ef632f74188e61c8863d"></meta-data>
     </application>
 
 </manifest>

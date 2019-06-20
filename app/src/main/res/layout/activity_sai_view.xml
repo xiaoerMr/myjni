@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sai.myjni.SaiViewActivity">
+
+
+    <com.sai.sailib.view.SaiEditView
+        android:id="@+id/boat_wave"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+
+    <com.sai.sailib.view.view.SaiEdit
+        android:id="@+id/sai_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sai_min_height="100dp"
+        app:sai_input_hint="输入地址"
+        app:sai_input_title="edit" />
+
+    <com.sai.sailib.view.view.SaiText
+        android:id="@+id/sai_view_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sai_input_text="kajskfj sfjask  fjsfkjs  slkfjlskdfjalsdkf sldkfj sdfsf s"
+        app:sai_input_title="text"
+        />
+    <com.sai.sailib.view.view.SaiSpinner
+        android:id="@+id/sai_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:sai_input_title="spinner"/>
+
+    <com.sai.sailib.button.SwitchButton
+        android:id="@+id/sb_custom"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:kswBackRadius="2dp"
+        app:kswThumbRadius="2dp"
+        app:kswThumbRangeRatio="2.2"
+        app:kswTintColor="#49416E"
+        app:kswTextOff="Off"
+        app:kswTextOn="On"
+        />
+
+</LinearLayout>

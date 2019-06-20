@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,11 +15,10 @@ import com.sai.sailib.R;
 public class SaiText extends RelativeLayout {
 
     private Context context;
-    private String strText,strTitle,strType;
+    private String strText,strTitle;
     private Drawable icHeard;
     private ImageView vInputImg;
     private TextView vInputTitle,vInputText;
-    private View vInputLine;
 
 
     public SaiText(Context context) {
@@ -51,7 +49,6 @@ public class SaiText extends RelativeLayout {
         vInputImg = findViewById(R.id.input_img);
         vInputTitle = findViewById(R.id.input_title);
         vInputText = findViewById(R.id.input_text);
-        vInputLine = findViewById(R.id.line);
 
 //        addView(view);
         initView();
@@ -69,10 +66,6 @@ public class SaiText extends RelativeLayout {
         if (!TextUtils.isEmpty(strText)) {
             setInputText(strText);
         }
-
-
-
-
     }
     public SaiText setInputIcon(int id){
         setInputIcon(context.getDrawable(id));

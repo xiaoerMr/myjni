@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/input"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
-
-    <ImageView
-        android:id="@+id/input_img"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_centerVertical="true"
-        android:background="@drawable/sai_icon_service" />
-
-    <TextView
-        android:layout_toEndOf="@+id/input_img"
-        android:id="@+id/input_title"
-        android:layout_marginStart="8dp"
-        android:layout_centerVertical="true"
-        android:gravity="center_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:textSize="18sp"/>
-
-    <EditText
-        android:layout_toEndOf="@+id/input_title"
-        android:id="@+id/input_edit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="8dp"
-        android:textSize="18sp"
-        android:background="@null"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/input_delete"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="4dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/sai_icon_delete"/>
+        <ImageView
+            android:id="@+id/input_img"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/sai_icon_service" />
 
-    <View
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/smairColorPrimary"/>
-</RelativeLayout>
+        <TextView
+            android:id="@+id/input_title"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/input_img"
+            android:gravity="center_vertical"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/input_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_toEndOf="@+id/input_title"
+            android:background="@null"
+            android:minLines="1"
+            android:layout_centerVertical="true"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/input_delete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/sai_icon_delete" />
+
+        <View
+            android:layout_below="@+id/input_edit"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginStart="32dp"
+            android:background="@color/smairColorPrimary" />
+    </RelativeLayout>

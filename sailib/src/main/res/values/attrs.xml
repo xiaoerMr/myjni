@@ -175,7 +175,9 @@
         <attr name="sai_input_type" format="enum">
             <enum name="text" value="0"/>
             <enum name="number" value="1"/>
+            <enum name="number_abc" value="2"/>
         </attr>
+        <attr name="sai_min_height" format="dimension|reference"/>
     </declare-styleable>
 
 
