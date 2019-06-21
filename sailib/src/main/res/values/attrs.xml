@@ -177,7 +177,7 @@
             <enum name="number" value="1"/>
             <enum name="number_abc" value="2"/>
         </attr>
-        <attr name="sai_min_height" format="dimension|reference"/>
+        <!--<attr name="sai_min_height" format="dimension|reference"/>-->
     </declare-styleable>
 
 

@@ -14,13 +14,7 @@
         android:layout_height="50dp"
         />
 
-    <com.sai.sailib.view.view.SaiEdit
-        android:id="@+id/sai_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:sai_min_height="100dp"
-        app:sai_input_hint="输入地址"
-        app:sai_input_title="edit" />
+
 
     <com.sai.sailib.view.view.SaiText
         android:id="@+id/sai_view_text"
@@ -34,7 +28,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:sai_input_title="spinner"/>
-
+    <com.sai.sailib.view.view.SaiEdit
+        android:id="@+id/sai_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sai_input_hint="输入地址"
+        app:sai_input_title="edit" />
     <com.sai.sailib.button.SwitchButton
         android:id="@+id/sb_custom"
         style="@style/SwitchButtonStyle"

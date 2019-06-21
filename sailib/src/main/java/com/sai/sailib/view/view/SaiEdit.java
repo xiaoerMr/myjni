@@ -10,14 +10,12 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sai.sailib.R;
-import com.sai.sailib.log.DLog;
 
 public class SaiEdit extends RelativeLayout {
 
@@ -57,7 +55,7 @@ public class SaiEdit extends RelativeLayout {
 
         icHeard = array.getDrawable(R.styleable.SaiEdit_sai_ic_heard);
         icDelete = array.getDrawable(R.styleable.SaiEdit_sai_ic_delete);
-        minHeight = array.getDimensionPixelSize(R.styleable.SaiEdit_sai_min_height, -1);
+//        minHeight = array.getDimensionPixelSize(R.styleable.SaiEdit_sai_min_height, -1);
 //        View view = inflate(context, R.layout.input_view_text, this);
         LayoutInflater.from(context).inflate(R.layout.input_view_edit, this);
         vInputImg = findViewById(R.id.input_img);
@@ -70,9 +68,10 @@ public class SaiEdit extends RelativeLayout {
     }
 
     private void initView() {
-        if (minHeight>0) {
-            vInputEdit.setMinimumHeight(minHeight);
-        }
+//        if (minHeight>0) {
+//            vInputEdit.setMinimumHeight(minHeight);
+//            vInput.setMinimumHeight(minHeight);
+//        }
         if (icHeard != null) {
             setInputIcon(icHeard);
         }
