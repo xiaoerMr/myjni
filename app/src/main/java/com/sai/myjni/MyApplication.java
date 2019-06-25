@@ -2,15 +2,15 @@ package com.sai.myjni;
 
 import android.app.Activity;
 import android.app.Application;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
 
+import com.sai.myjni.db.table.manager.DaoMaster;
+import com.sai.myjni.db.table.manager.DaoSession;
 import com.sai.sailib.log.DLog;
 import com.sai.sailib.smartdialog.SmartShow;
+
+
+import org.greenrobot.greendao.database.Database;
 
 import java.util.Stack;
 
@@ -20,6 +20,7 @@ public class MyApplication extends Application {
      * 先进后出
      */
     public static Stack<Activity> store = new Stack<>();
+    private DaoSession daoSession;
 
     @Override
     public void onCreate() {
@@ -27,7 +28,20 @@ public class MyApplication extends Application {
         initDLog();
         SmartShow.init(this);
 //        registerActivityLifecycleCallbacks(new ActivityCallBack());
+        initDB();
     }
+
+    private void initDB() {
+        String db_name ="sai_db";
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, db_name);
+        Database db = helper.getWritableDb();
+        DaoMaster master = new DaoMaster(db);
+        daoSession = master.newSession();
+    }
+    public DaoSession getDaoSession(){
+        return daoSession;
+    }
+
     private void initDLog(){
         DLog.Config config = DLog.init(this)
                 .setLogSwitch(DEBUG_MODE)// 设置log总开关，包括输出到控制台和文件，默认开

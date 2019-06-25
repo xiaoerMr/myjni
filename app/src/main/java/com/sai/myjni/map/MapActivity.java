@@ -7,23 +7,20 @@ import android.view.View;
 import android.widget.Button;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.AMapUtils;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.ArcOptions;
 import com.amap.api.maps.model.CircleOptions;
 import com.amap.api.maps.model.LatLng;
-import com.amap.api.maps.model.MarkerOptions;
-import com.amap.api.maps.model.PolygonOptions;
-import com.amap.api.maps.model.Polyline;
 import com.amap.api.maps.model.PolylineOptions;
-import com.sai.myjni.LocationUtils;
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
+import com.sai.sailib.log.DLog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MapActivity extends BaseActivity {
@@ -35,8 +32,6 @@ public class MapActivity extends BaseActivity {
     Button rToCir;
 
     private AMap aMap;
-    private double[] latLng1 = {};
-
 
     @Override
     protected int getLayoutId() {
@@ -53,6 +48,21 @@ public class MapActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+        // 根据圆心,半径 角度 计算另一点坐标, 及误差
+        double []a = {  116.397196,39.908511  };
+        double []b = {  116.498476,39.817199  };
+        LatLng latLng1 = new LatLng(a[1],a[0]);//五棵松地铁
+        LatLng latLng2 = new LatLng(b[1],b[0]);//国贸
+
+        double angle = 135;
+        //半径
+        float distance = AMapUtils.calculateLineDistance(latLng1,latLng2);
+        //另一点坐标
+        LatLng latLng = LocationUtils.getLocationByDistanceAndLocationAndDirection( latLng1,angle, distance );
+        DLog.e(latLng);
+        //误差
+        float distance1 = AMapUtils.calculateLineDistance(latLng2,latLng);
+        DLog.e(distance1);
 
     }
 

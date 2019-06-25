@@ -96,8 +96,14 @@
         android:text="多状态 view" />
 
 
-
-
+    <Button
+        android:id="@+id/db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog"
+        android:layout_toEndOf="@+id/view"
+        android:text="数据库"
+        android:textAllCaps="false" />
 
 
 
