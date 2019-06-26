@@ -2,6 +2,7 @@ package com.sai.myjni.db.table;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Unique;
 import org.greenrobot.greendao.annotation.Generated;
@@ -18,16 +19,21 @@ public class User {
     private String age;
     @NotNull
     private String sex;
-    @Generated(hash = 469082025)
+    private String clazz;
+
+
+   
+    @Generated(hash = 586692638)
+    public User() {
+    }
+    @Generated(hash = 57432095)
     public User(Long id, @NotNull String name, @NotNull String age,
-            @NotNull String sex) {
+            @NotNull String sex, String clazz) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.sex = sex;
-    }
-    @Generated(hash = 586692638)
-    public User() {
+        this.clazz = clazz;
     }
     public Long getId() {
         return this.id;
@@ -61,6 +67,13 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age='" + age + '\'' +
                 ", sex='" + sex + '\'' +
+                ", clazz='" + clazz + '\'' +
                 '}';
+    }
+    public String getClazz() {
+        return this.clazz;
+    }
+    public void setClazz(String clazz) {
+        this.clazz = clazz;
     }
 }
