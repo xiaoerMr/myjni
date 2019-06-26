@@ -2,17 +2,13 @@ package com.sai.myjni;
 
 import android.app.Activity;
 import android.app.Application;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import com.sai.myjni.db.table.manager.DaoMaster;
-import com.sai.myjni.db.table.manager.DaoSession;
-import com.sai.myjni.db.table.manager.SaiDaoMaster;
+import com.sai.myjni.db.table.manager.SaiDBManager;
 import com.sai.sailib.log.DLog;
 import com.sai.sailib.smartdialog.SmartShow;
 
 
-import org.greenrobot.greendao.database.Database;
 
 import java.util.Stack;
 
@@ -22,7 +18,6 @@ public class MyApplication extends Application {
      * 先进后出
      */
     public static Stack<Activity> store = new Stack<>();
-    private DaoSession daoSession;
 
     @Override
     public void onCreate() {
@@ -35,20 +30,17 @@ public class MyApplication extends Application {
 
     private void initDB() {
         String db_name ="sai_db";
-
+        SaiDBManager.getInstance().init(this,db_name);
 //        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, db_name);
 //        Database db = helper.getWritableDb();
 //        DaoMaster master = new DaoMaster(db);
 //        daoSession = master.newSession();
 
         //版本管理
-        SaiDaoMaster helper = new SaiDaoMaster(this, db_name);
-        SQLiteDatabase database = helper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(database);
-        daoSession = daoMaster.newSession();
-    }
-    public DaoSession getDaoSession(){
-        return daoSession;
+//        SaiDaoMaster helper = new SaiDaoMaster(this, db_name);
+//        SQLiteDatabase database = helper.getWritableDatabase();
+//        DaoMaster daoMaster = new DaoMaster(database);
+//        daoSession = daoMaster.newSession();
     }
 
     private void initDLog(){

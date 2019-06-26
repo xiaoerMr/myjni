@@ -4,13 +4,12 @@ package com.sai.myjni.db;
 import android.view.View;
 import android.widget.TextView;
 
-import com.sai.myjni.MyApplication;
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
 import com.sai.myjni.db.table.User;
 import com.sai.myjni.db.table.manager.DaoSession;
+import com.sai.myjni.db.table.manager.SaiDBManager;
 import com.sai.myjni.db.table.manager.UserDao;
-import com.sai.sailib.log.DLog;
 import com.sai.sailib.toutiao.VerificationUtils;
 
 
@@ -39,8 +38,7 @@ public class DBActivity extends BaseActivity {
     protected void initView() {
 
         //获取数据库对象
-        daoSession = ((MyApplication) getApplication()).getDaoSession();
-
+        daoSession =  SaiDBManager.getInstance().getDaoSessionNormal();
         //获取表对象
         userDao = daoSession.getUserDao();
         random = new Random();
@@ -69,7 +67,6 @@ public class DBActivity extends BaseActivity {
                 }else {
                     User user = getUser();
                     insert = userDao.insert(user);
-//                     DLog.e(user.toString());
                 }
 
 
