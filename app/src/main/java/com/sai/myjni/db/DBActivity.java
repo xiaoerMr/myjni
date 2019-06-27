@@ -38,7 +38,7 @@ public class DBActivity extends BaseActivity {
     protected void initView() {
 
         //获取数据库对象
-        daoSession =  SaiDBManager.getInstance().getDaoSessionNormal();
+        daoSession =  SaiDBManager.getInstance().getDaoSessionEncryption();
         //获取表对象
         userDao = daoSession.getUserDao();
         random = new Random();

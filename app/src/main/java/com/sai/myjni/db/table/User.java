@@ -2,7 +2,6 @@ package com.sai.myjni.db.table;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Unique;
 import org.greenrobot.greendao.annotation.Generated;
@@ -22,10 +21,8 @@ public class User {
     private String clazz;
 
 
-   
-    @Generated(hash = 586692638)
-    public User() {
-    }
+
+
     @Generated(hash = 57432095)
     public User(Long id, @NotNull String name, @NotNull String age,
             @NotNull String sex, String clazz) {
@@ -35,30 +32,16 @@ public class User {
         this.sex = sex;
         this.clazz = clazz;
     }
-    public Long getId() {
-        return this.id;
+
+
+
+
+    @Generated(hash = 586692638)
+    public User() {
     }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getName() {
-        return this.name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getAge() {
-        return this.age;
-    }
-    public void setAge(String age) {
-        this.age = age;
-    }
-    public String getSex() {
-        return this.sex;
-    }
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+
+
+
 
     @Override
     public String toString() {
@@ -70,10 +53,75 @@ public class User {
                 ", clazz='" + clazz + '\'' +
                 '}';
     }
+
+
+
+
+    public Long getId() {
+        return this.id;
+    }
+
+
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
+
+    public String getName() {
+        return this.name;
+    }
+
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+
+    public String getAge() {
+        return this.age;
+    }
+
+
+
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+
+
+
+    public String getSex() {
+        return this.sex;
+    }
+
+
+
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+
+
+
     public String getClazz() {
         return this.clazz;
     }
+
+
+
+
     public void setClazz(String clazz) {
         this.clazz = clazz;
     }
+
 }

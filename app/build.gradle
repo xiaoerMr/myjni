@@ -72,6 +72,7 @@ dependencies {
     implementation 'android.arch.lifecycle:common-java8:1.1.1'
     implementation 'android.arch.lifecycle:livedata:1.1.1'
     implementation 'org.greenrobot:greendao:3.2.2'  // add library
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.7@aar'//加密
     //    implementation(name: 'sailib-release', ext: 'aar')
     //屏幕适配
     //    implementation(name: 'dutillibrary-release', ext: 'aar')
