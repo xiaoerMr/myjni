@@ -34,7 +34,9 @@ public class MapActivity extends BaseActivity {
     Button rToCir;
 
     private AMap aMap;
-    private MapDrawFactory factory;
+    private MapDrawFactory factory = new MapDrawFactory();
+    private  Random random = new Random();
+
 
     @Override
     protected int getLayoutId() {
@@ -72,18 +74,20 @@ public class MapActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.more: //多种类型
-                LatLng latLng = new LatLng(39.984059, 116.307771);
-                ArrayList<DrawBean> rectangle = createRectangle(latLng, 0.2, 0.3);
+                        LatLng latLng = new LatLng(39.984059 +random.nextInt(10)*0.05, 116.307771+random.nextInt(10)*0.05);
+                        ArrayList<DrawBean> rectangle = createRectangle(latLng, 0.2, 0.3);
 
-                factory = new MapDrawFactory();
-                factory.setMarkerClickListener(new AMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker) {
-                        DToast.warning(getBaseContext(), marker.getPosition().toString());
-                        return true;
-                    }
-                });
-                factory.creatList(aMap,rectangle);
+
+                        factory.setMarkerClickListener(new AMap.OnMarkerClickListener() {
+                            @Override
+                            public boolean onMarkerClick(Marker marker) {
+                                DToast.warning(getBaseContext(), marker.getPosition().toString());
+                                return true;
+                            }
+                        });
+                        factory.createList(aMap,rectangle);
+
+
 
                 break;
             case R.id.show:
@@ -203,7 +207,8 @@ public class MapActivity extends BaseActivity {
         latLngs.add(new LatLng(center.latitude + halfHeight, center.longitude + halfWidth));
         latLngs.add(new LatLng(center.latitude + halfHeight, center.longitude - halfWidth));
 
-        Random random = new Random();
+
+
         ArrayList<DrawBean> beans = new ArrayList<>();
         for (LatLng latLng : latLngs) {
             DrawBean bean = new DrawBean();
@@ -228,14 +233,14 @@ public class MapActivity extends BaseActivity {
         bean.setDrawType(MapDrawFactory.Type_Line);
         bean.setLineLatLngs(latLngs);
         bean.setLineColor(Color.YELLOW);
-        bean.setLineStrokeWidth(25);
+        bean.setLineStrokeWidth(12);
         beans.add(bean);
 
         DrawBean bean2 = new DrawBean();
         bean2.setDrawType(MapDrawFactory.Type_Polygon);
         bean2.setPolygonLatLngs(latLngs);
         bean2.setPolygonStrokeColor(Color.GREEN);
-        bean2.setPolygonStrokeWidth(12);
+        bean2.setPolygonStrokeWidth(25);
         beans.add(bean2);
         return beans;
     }

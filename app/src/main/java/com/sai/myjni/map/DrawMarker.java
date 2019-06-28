@@ -57,6 +57,7 @@ public class DrawMarker extends DrawMap {
             markers.add(marker);
         }
 
+//        DLog.e("-----线程="+Thread.currentThread().getName());
         if (null != markerClickListener) {
             aMap.setOnMarkerClickListener(markerClickListener);
         }
