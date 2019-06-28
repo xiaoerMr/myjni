@@ -1,5 +1,6 @@
 package com.sai.myjni.file;
 
+import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
@@ -38,7 +39,7 @@ public class ReadFileActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
 
     }
 

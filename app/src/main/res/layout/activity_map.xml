@@ -9,9 +9,10 @@
     <com.amap.api.maps.MapView
         android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -28,28 +29,70 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="半径画圆"
-            android:textSize="10sp"
-            />
- <Button
+            android:textSize="10sp" />
+
+        <Button
             android:id="@+id/oval"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="椭圆"
-            android:textSize="10sp"
-            />
- <Button
+            android:textSize="10sp" />
+
+        <Button
             android:id="@+id/sector"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="扇形"
-            android:textSize="10sp"
-            />
+            android:textSize="10sp" />
 
 
+
+    </LinearLayout>
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/more"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="多种"
+            android:textSize="10sp" />
+        <Button
+            android:id="@+id/show"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="显示"
+            android:textSize="10sp" />
+        <Button
+            android:id="@+id/hint"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="隐藏"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="清空"
+            android:textSize="10sp" />
     </LinearLayout>
 
 

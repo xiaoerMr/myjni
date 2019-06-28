@@ -1,5 +1,7 @@
 package com.sai.myjni;
 
+import android.os.Bundle;
+
 import com.sai.myjni.base.BaseActivity;
 import com.sai.sailib.log.DLog;
 
@@ -15,7 +17,7 @@ public class SaiLineLayout  extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         Student student1 = new Student("学生1");
         Student student2 = new Student("学生2");
         Boss boss = new Boss();

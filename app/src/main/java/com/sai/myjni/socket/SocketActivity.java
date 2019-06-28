@@ -1,6 +1,7 @@
 package com.sai.myjni.socket;
 
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +41,7 @@ public class SocketActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setBarName("webSocket 测试");
     }
 

@@ -1,5 +1,6 @@
 package com.sai.myjni.thread;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -39,7 +40,7 @@ public class ThreadActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setBarName("线程池");
 
         handler = new Handler(getMainLooper()) {

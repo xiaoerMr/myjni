@@ -1,6 +1,7 @@
 package com.sai.myjni.dia;
 
 
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 
@@ -33,7 +34,7 @@ public class DiaLogActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
 
     }
 

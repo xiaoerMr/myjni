@@ -1,5 +1,6 @@
 package com.sai.myjni.netstate;
 
+import android.os.Bundle;
 import android.widget.TextView;
 
 import com.sai.myjni.R;
@@ -20,7 +21,7 @@ public class NetStateActivity extends BaseActivity {
 
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setBarName("实时网络状态");
         NetManager.getInstance(this).getNetState(new NetStateListener() {
             @Override

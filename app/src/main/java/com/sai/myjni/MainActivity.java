@@ -2,6 +2,7 @@ package com.sai.myjni;
 
 import android.Manifest;
 import android.arch.lifecycle.Observer;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         initPermission();
 
 

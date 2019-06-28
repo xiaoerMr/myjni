@@ -1,5 +1,6 @@
 package com.sai.myjni;
 
+import android.os.Bundle;
 import android.widget.CompoundButton;
 
 import com.sai.myjni.base.BaseActivity;
@@ -28,7 +29,7 @@ public class SaiViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
 //        vSaiEdit.setInputDefaultText("开始减肥会计师福建省地方圣诞节佛你设计费刷卡机佛山佛撒娇佛撒娇发");
         String[] d = new String[]{
                 "上海",

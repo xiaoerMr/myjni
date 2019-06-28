@@ -18,16 +18,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView(savedInstanceState);
     }
 
-    protected  void initView(Bundle savedInstanceState){}
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        initView();
-    }
 
     protected abstract int getLayoutId();
-    protected abstract void initView();
+    protected abstract void initView(Bundle savedInstanceState);
 
     public void setBarName(String name){
         getSupportActionBar().setTitle(name);

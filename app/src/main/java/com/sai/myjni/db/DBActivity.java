@@ -1,6 +1,7 @@
 package com.sai.myjni.db;
 
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ public class DBActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
 
         //获取数据库对象
         daoSession =  SaiDBManager.getInstance().getDaoSessionEncryption();
