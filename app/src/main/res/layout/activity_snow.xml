@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sai.myjni.effects.TreeActivity">
+    tools:context=".effects.snow.SnowActivity">
 
-    <com.sai.myjni.effects.hearttree.FlowerTreeView
+    <com.sai.myjni.effects.snow.Snow
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/color3"
+        />
 </android.support.constraint.ConstraintLayout>

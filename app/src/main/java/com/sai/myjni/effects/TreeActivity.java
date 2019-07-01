@@ -1,8 +1,10 @@
-package com.sai.myjni;
+package com.sai.myjni.effects;
 
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.sai.myjni.R;
 
 /**
  * @author dianxiaoer

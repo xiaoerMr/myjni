@@ -44,12 +44,12 @@
 
 
     <Button
-        android:id="@+id/tree"
+        android:id="@+id/effects"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_below="@+id/dialog"
-        android:text="树" />
+        android:text="特效" />
 
     <Button
         android:id="@+id/map"
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_below="@+id/dialog"
-        android:layout_toEndOf="@+id/tree"
+        android:layout_toEndOf="@+id/effects"
         android:text="地图" />
 
     <Button
@@ -104,7 +104,6 @@
         android:layout_toEndOf="@+id/view"
         android:text="数据库"
         android:textAllCaps="false" />
-
 
 
     <com.sai.sailib.loading.MKLoader

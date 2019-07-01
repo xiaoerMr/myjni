@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.sai.myjni.base.BaseActivity;
 import com.sai.myjni.db.DBActivity;
 import com.sai.myjni.dia.DiaLogActivity;
+import com.sai.myjni.effects.EffectsActivity;
 import com.sai.myjni.file.ReadFileActivity;
 import com.sai.myjni.livedata.SaiLiveDateBus;
 import com.sai.myjni.map.MapActivity;
@@ -70,7 +71,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,
             R.id.read_file, R.id.dialog, R.id.thread,
-            R.id.toutiao, R.id.stateview, R.id.tree,
+            R.id.toutiao, R.id.stateview, R.id.effects,
             R.id.map,R.id.view,R.id.db})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -98,8 +99,8 @@ public class MainActivity extends BaseActivity {
             case R.id.stateview:
                 JumpActivity(StateViewActivity.class);
                 break;
-            case R.id.tree:
-                JumpActivity(TreeActivity.class);
+            case R.id.effects:
+                JumpActivity(EffectsActivity.class);
                 break;
             case R.id.map:
                 JumpActivity(MapActivity.class);

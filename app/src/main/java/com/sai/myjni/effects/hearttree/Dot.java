@@ -1,4 +1,4 @@
-package com.sai.sailib.view.hearttree;
+package com.sai.myjni.effects.hearttree;
 
 public class Dot {
     public float x;

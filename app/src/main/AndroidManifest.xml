@@ -18,11 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".db.DBActivity"></activity>
+        <activity android:name=".effects.snow.SnowActivity"></activity>
+        <activity android:name=".effects.EffectsActivity" />
+        <activity android:name=".db.DBActivity" />
         <activity android:name=".SaiViewActivity" />
         <activity android:name=".map.MapActivity" />
         <activity
-            android:name=".TreeActivity"
+            android:name=".effects.TreeActivity"
             android:theme="@style/noTool" />
         <activity android:name=".StateViewActivity" />
         <activity android:name=".TouTiaoActivity" />
