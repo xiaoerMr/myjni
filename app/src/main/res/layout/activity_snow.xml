@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".effects.snow.SnowActivity">
+    tools:context=".effects.SnowActivity">
 
     <com.sai.myjni.effects.snow.Snow
         android:layout_width="match_parent"

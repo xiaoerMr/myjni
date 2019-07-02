@@ -5,7 +5,6 @@ import android.view.View;
 
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
-import com.sai.myjni.effects.snow.SnowActivity;
 
 public class EffectsActivity extends BaseActivity {
 

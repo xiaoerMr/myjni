@@ -9,7 +9,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.sai.sailib.log.DLog;
+
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 // 教程: https://www.jianshu.com/p/ce704b03f3f5
 
@@ -25,6 +29,7 @@ public class Snow extends View {
     private final long time = 3 * 1000;
     private Random random;
     private int snowNumber;//数量
+    private SnowFlow tree;
 
     public Snow(Context context) {
         this(context,null);
@@ -39,18 +44,9 @@ public class Snow extends View {
 
         mContext = context;
         mAttrs = attrs;
-        snowNumber = 20;
-        init();
     }
 
-    private void init() {
 
-        testPaint = new Paint();
-        testPaint.setColor(Color.WHITE);
-        testPaint.setStyle(Paint.Style.FILL);
-        snowY = 0;
-        random = new Random();
-    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -84,30 +80,20 @@ public class Snow extends View {
 
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
 
-        int nextInt = random.nextInt(getWidth());
-        for (int i = 0; i < snowNumber; i++) {
-            canvas.drawCircle(nextInt,snowY, 20,testPaint);
-
+        if (tree == null) {
+            tree = new SnowFlow(getWidth(), getHeight());
         }
-        //定时绘制 3 秒
-        getHandler().postDelayed(runnable,time);
+        tree.draw(canvas);
 
+        getHandler().postDelayed(runnable, 150);
     }
 
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-
-            snowY += 15; //每次移动的位置
-
-            if (snowY> viewHeight) {//超出 view 的高度
-                snowY = 0;
-            }
-
-            //位置改变了,更新 View
             invalidate();
         }
     };

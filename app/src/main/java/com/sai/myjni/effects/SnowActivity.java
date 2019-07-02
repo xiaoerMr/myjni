@@ -1,4 +1,4 @@
-package com.sai.myjni.effects.snow;
+package com.sai.myjni.effects;
 
 import android.os.Bundle;
 

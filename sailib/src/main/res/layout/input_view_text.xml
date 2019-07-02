@@ -36,6 +36,7 @@
         android:gravity="end"/>
 
     <View
+        android:layout_toEndOf="@id/input_title"
         android:id="@+id/line"
         android:layout_below="@id/input_text"
         android:layout_width="match_parent"
