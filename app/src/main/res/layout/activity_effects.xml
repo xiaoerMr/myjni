@@ -18,6 +18,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+
+        android:id="@+id/button13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -25,5 +27,37 @@
         android:onClick="tree"
         android:text="树"
         app:layout_constraintStart_toEndOf="@+id/button12"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.sai.myjni.effects.ScaleView
+        android:id="@+id/scaleView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/ksw_md_solid_checked_disable"
+        app:layout_constraintTop_toBottomOf="@+id/button12" />
+
+    <com.sai.myjni.effects.ScakeV
+        android:id="@+id/scaleV"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/scaleView"
+        tools:layout_editor_absoluteX="124dp" />
+
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@+id/scaleV" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/button13"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

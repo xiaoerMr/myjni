@@ -12,4 +12,9 @@
     <color name="color2">#1AFFD5</color>
     <color name="color3">#2196F3</color>
 
+    <color name="yellow">#f7d321</color>
+    <color name="age_text">#777777</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#2196F3</color>
+
 </resources>
