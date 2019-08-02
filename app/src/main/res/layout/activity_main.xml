@@ -104,6 +104,29 @@
         android:layout_toEndOf="@+id/view"
         android:text="数据库"
         android:textAllCaps="false" />
+    <Button
+        android:id="@+id/rx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/effects"
+        android:text="rx框架"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/annotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/effects"
+        android:layout_toEndOf="@+id/rx"
+        android:text="注解"
+        android:textAllCaps="false" />
+<Button
+        android:id="@+id/lazy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/effects"
+        android:layout_toEndOf="@+id/annotation"
+        android:text="懒加载"
+        android:textAllCaps="false" />
 
 
     <com.sai.sailib.loading.MKLoader

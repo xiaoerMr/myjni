@@ -89,7 +89,7 @@ public class ReadFileActivity extends BaseActivity {
 
 
 //        StringBuffer stringBuffer = new StringBuffer();
-//        for (Bean.FeaturesBean feature : bean.getFeatures()) {
+//        for (BaseResponse.FeaturesBean feature : bean.getFeatures()) {
 //            List<List<Double>> lists = feature.getGeometry().getCoordinates().get(0).get(0);
 //
 //            List<Double> doubles = lists.get(0);

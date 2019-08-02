@@ -2,11 +2,13 @@ package com.sai.myjni.effects;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
+import com.sai.sailib.button.SaiClickListener;
+import com.sai.sailib.button.SaiSwitchButton;
+import com.sai.sailib.toast.DToast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +21,10 @@ public class EffectsActivity extends BaseActivity {
     ScakeV scaleV;
     @BindView(R.id.input)
     EditText input;
+    @BindView(R.id.direction)
+    DirectionView direction;
+    @BindView(R.id.switch_button)
+    SaiSwitchButton switchButton;
 
     @Override
     protected int getLayoutId() {
@@ -27,8 +33,34 @@ public class EffectsActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        direction.setListener(new DirectionListener() {
+            @Override
+            public void onRightClick() {
+                DToast.warning(EffectsActivity.this, "Right");
+            }
 
+            @Override
+            public void onTopClick() {
+                DToast.warning(EffectsActivity.this, "Top");
+            }
 
+            @Override
+            public void onLeftClick() {
+                DToast.warning(EffectsActivity.this, "Left");
+            }
+
+            @Override
+            public void onBottomClick() {
+                DToast.warning(EffectsActivity.this, "Bottom");
+            }
+        });
+        switchButton.setTitle("暖改动后发生的发挥");
+        switchButton.setSaiClickListener(new SaiClickListener() {
+            @Override
+            public void OnClick(boolean selector) {
+                    DToast.warning(EffectsActivity.this, "开关="+selector);
+            }
+        });
     }
 
     public void snow(View view) {
@@ -46,4 +78,7 @@ public class EffectsActivity extends BaseActivity {
         String trim = input.getText().toString().trim();
         scaleV.showSacke(Float.valueOf(trim));
     }
+
+
+
 }

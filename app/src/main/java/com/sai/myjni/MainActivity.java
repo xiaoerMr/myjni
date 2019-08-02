@@ -7,14 +7,18 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import com.sai.myjni.annotation.AnnotationActivity;
 import com.sai.myjni.base.BaseActivity;
 import com.sai.myjni.db.DBActivity;
 import com.sai.myjni.dia.DiaLogActivity;
 import com.sai.myjni.effects.EffectsActivity;
 import com.sai.myjni.file.ReadFileActivity;
+import com.sai.myjni.lazyfragment.LazyActivity;
+import com.sai.myjni.lazyfragment.LazyFragment;
 import com.sai.myjni.livedata.SaiLiveDateBus;
 import com.sai.myjni.map.MapActivity;
 import com.sai.myjni.netstate.NetStateActivity;
+import com.sai.myjni.rx.RxActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
 
@@ -72,7 +76,8 @@ public class MainActivity extends BaseActivity {
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,
             R.id.read_file, R.id.dialog, R.id.thread,
             R.id.toutiao, R.id.stateview, R.id.effects,
-            R.id.map,R.id.view,R.id.db})
+            R.id.map,R.id.view,R.id.db,R.id.rx,R.id.annotation,
+            R.id.lazy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.jni:
@@ -111,6 +116,15 @@ public class MainActivity extends BaseActivity {
             case R.id.db:
                 JumpActivity(DBActivity.class);
                 break;
+            case R.id.rx:
+                JumpActivity(RxActivity.class);
+                break;
+            case R.id.annotation:
+                JumpActivity(AnnotationActivity.class);
+                break;
+            case R.id.lazy:
+                JumpActivity(LazyActivity.class);
+                break;
             default:
         }
     }
@@ -120,7 +134,7 @@ public class MainActivity extends BaseActivity {
         //若权限申请多条 自己在下面添加既可
         //注意:要记的给自己的权限添加图片哦
 //        permissonItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
-//        permissonItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "定位", R.drawable.permission_ic_location));
+        permissonItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "定位", R.drawable.permission_ic_location));
         permissonItems.add(new PermissionItem(Manifest.permission.WRITE_EXTERNAL_STORAGE, "读写文件", R.drawable.permission_ic_storage));
         permissonItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "读写文件", R.drawable.permission_ic_storage));
         HiPermission.create(this)

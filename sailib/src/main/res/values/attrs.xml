@@ -189,4 +189,9 @@
         <attr name="errorView" format="reference"/>
         <attr name="loadingView" format="reference"/>
     </declare-styleable>
+
+    <!--开关选择 view-->
+    <declare-styleable name="SaiSwitchButton">
+        <attr name="title" format="string"/>
+    </declare-styleable>
 </resources>

@@ -32,5 +32,7 @@
     <color name="smairtColorAccent">#FF4081</color>
     <color name="smairtColorBlack">#353535</color>
     <color name="smart_show_light_gray">#33cccccc</color>
+    <color name="sai_switch_off">#ECECEC</color>
+    <color name="sai_switch_no">#6FB68B</color>
 
 </resources>

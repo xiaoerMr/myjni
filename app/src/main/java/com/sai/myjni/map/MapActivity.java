@@ -2,17 +2,28 @@ package com.sai.myjni.map;
 
 
 import android.graphics.Color;
+import android.graphics.Point;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMapUtils;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.Projection;
+import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.ArcOptions;
 import com.amap.api.maps.model.CircleOptions;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
+import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.PolylineOptions;
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
@@ -23,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MapActivity extends BaseActivity {
@@ -32,10 +44,14 @@ public class MapActivity extends BaseActivity {
     MapView mapView;
     @BindView(R.id.r_to_cir)
     Button rToCir;
+    @BindView(R.id.text)
+    TextView text;
 
     private AMap aMap;
     private MapDrawFactory factory = new MapDrawFactory();
-    private  Random random = new Random();
+    private Random random = new Random();
+    private AMapLocationClient mLocationClient;
+    private int flg = 0;
 
 
     @Override
@@ -48,45 +64,114 @@ public class MapActivity extends BaseActivity {
             aMap = mapView.getMap();
         }
         mapView.onCreate(savedInstanceState);
+        UiSettings mUiSettings = aMap.getUiSettings();//实例化UiSettings类对象
+        mUiSettings.setZoomControlsEnabled(false);
+        mUiSettings.setRotateGesturesEnabled(false);
+        mUiSettings.setTiltGesturesEnabled(false);
 
-        //根据圆心,半径 角度 计算另一点坐标, 及误差
-        double []a = {  116.397196,39.908511  };
-        double []b = {  116.498476,39.817199  };
-        LatLng latLng1 = new LatLng(a[1],a[0]);//五棵松地铁
-        LatLng latLng2 = new LatLng(b[1],b[0]);//国贸
 
-        double angle = 135;
-        //半径
-        float distance = AMapUtils.calculateLineDistance(latLng1,latLng2);
-        //另一点坐标
-        LatLng latLng = MapUtils.getLocation( latLng1,angle, distance );
-        DLog.e(latLng);
-        //误差
-        float distance1 = AMapUtils.calculateLineDistance(latLng2,latLng);
-        DLog.e(distance1);
+        //计算并绘制
+        Compe();
+    }
 
+    private void initLoation() {
+        //小蓝点
+        MyLocationStyle myLocationStyle = new MyLocationStyle();
+////        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_MAP_ROTATE_NO_CENTER);//连续定位、蓝点不会移动到地图中心点，地图依照设备方向旋转，并且蓝点会跟随设备移动。
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）默认执行此种模式。
+        aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
+        aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+
+        //初始化定位
+        mLocationClient = new AMapLocationClient(getApplicationContext());
+//        定位属性
+        AMapLocationClientOption option = new AMapLocationClientOption();
+        option.setLocationPurpose(AMapLocationClientOption.AMapLocationPurpose.Transport);//运动模式
+        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//使用网络定位和GPS定位，优先返回最高精度
+//        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Device_Sensors);//不需要连接网络，只使用GPS进行定位
+        option.setInterval(2000);
+        option.setNeedAddress(true);
+
+        //设置定位回调监听
+        mLocationClient.setLocationListener(new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation location) {
+//                DLog.e(location.getLatitude());
+                final StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append("第");
+                stringBuffer.append(flg);
+                stringBuffer.append("次定位");
+                stringBuffer.append("\n");
+                stringBuffer.append("经纬度:");
+                stringBuffer.append(location.getLatitude());
+                stringBuffer.append("--");
+                stringBuffer.append(location.getLongitude());
+                stringBuffer.append("\n");
+                stringBuffer.append("速度:");
+                stringBuffer.append(location.getSpeed());
+                stringBuffer.append("\n");
+                stringBuffer.append("高度:");
+                stringBuffer.append(location.getAltitude());
+                stringBuffer.append("\n");
+                stringBuffer.append("方向:");
+                stringBuffer.append(location.getBearing());
+                flg++;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        text.setText(stringBuffer);
+                    }
+                });
+            }
+        });
+
+
+        if (null != mLocationClient) {
+            mLocationClient.setLocationOption(option);
+            //设置场景模式后最好调用一次stop，再调用start以保证场景模式生效
+            mLocationClient.stopLocation();
+            mLocationClient.startLocation();
+        }
 
     }
 
+    private void Compe() {
+        //根据圆心,半径 角度 计算另一点坐标, 及误差
+        double[] a = {116.397196, 39.908511};
+        double[] b = {116.498476, 39.817199};
+        LatLng latLng1 = new LatLng(a[1], a[0]);//五棵松地铁
+        LatLng latLng2 = new LatLng(b[1], b[0]);//国贸
 
-    @OnClick({R.id.r_to_cir, R.id.oval,R.id.sector,
-            R.id.more,R.id.show,R.id.hint,R.id.delete})
+        double angle = 135;
+        //半径
+        float distance = AMapUtils.calculateLineDistance(latLng1, latLng2);
+        //另一点坐标
+        LatLng latLng = MapUtils.getLocation(latLng1, angle, distance);
+        DLog.e(latLng);
+        //误差
+        float distance1 = AMapUtils.calculateLineDistance(latLng2, latLng);
+        DLog.e(distance1);
+    }
+
+
+    @OnClick({R.id.r_to_cir, R.id.oval, R.id.sector,
+            R.id.more, R.id.show, R.id.hint, R.id.delete,
+            R.id.location, R.id.loc_content})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.more: //多种类型
-                        LatLng latLng = new LatLng(39.984059 +random.nextInt(10)*0.05, 116.307771+random.nextInt(10)*0.05);
-                        ArrayList<DrawBean> rectangle = createRectangle(latLng, 0.2, 0.3);
+                LatLng latLng = new LatLng(39.984059 + random.nextInt(10) * 0.05, 116.307771 + random.nextInt(10) * 0.05);
+                ArrayList<DrawBean> rectangle = createRectangle(latLng, 0.2, 0.3);
 
 
-                        factory.setMarkerClickListener(new AMap.OnMarkerClickListener() {
-                            @Override
-                            public boolean onMarkerClick(Marker marker) {
-                                DToast.warning(getBaseContext(), marker.getPosition().toString());
-                                return true;
-                            }
-                        });
-                        factory.createList(aMap,rectangle);
-
+                factory.setMarkerClickListener(new AMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+                        DToast.warning(getBaseContext(), marker.getPosition().toString());
+                        return true;
+                    }
+                });
+                factory.createList(aMap, rectangle);
 
 
                 break;
@@ -107,14 +192,6 @@ public class MapActivity extends BaseActivity {
                 break;
 
 
-
-
-
-
-
-
-
-
             case R.id.r_to_cir: //圆
                 LatLng latLng1 = new LatLng(39.984059, 116.307771);
 
@@ -127,7 +204,7 @@ public class MapActivity extends BaseActivity {
             case R.id.oval: //椭圆
                 LatLng latLng3 = new LatLng(39.984059, 116.307771);
                 //椭圆 Oval
-                add(latLng3,1000,0.5);
+                add(latLng3, 1000, 0.5);
                 break;
             case R.id.sector: //扇形
                 LatLng latLng2 = new LatLng(39.984059, 116.307771);
@@ -137,6 +214,18 @@ public class MapActivity extends BaseActivity {
 
                 //扇形 圆心 开始角, 结束角 半径
                 addSector(latLng2, x, y, r);
+                break;
+            case R.id.location: //定位
+                initLoation();
+                break;
+            case R.id.loc_content: //获取中心点坐标
+                int w = mapView.getRight() - mapView.getLeft();
+                int h = mapView.getBottom() - mapView.getTop();
+                Projection projection = aMap.getProjection();
+                LatLng pt = projection.fromScreenLocation(new Point(w / 2, h / 2));
+                text.setText(pt.toString());
+                DLog.e(pt.toString());
+                aMap.addMarker(new MarkerOptions().position(pt));
                 break;
         }
     }
@@ -154,9 +243,9 @@ public class MapActivity extends BaseActivity {
 
     //扇形
     private void addSector(LatLng latLng, double x, double y, double r) {
-        LatLng start  = MapUtils.getLocation(latLng, x, r);
-        LatLng end    =MapUtils.getLocation(latLng, y, r);
-        LatLng center = MapUtils.getLocation(latLng, (y - x) /2 +x, r);
+        LatLng start = MapUtils.getLocation(latLng, x, r);
+        LatLng end = MapUtils.getLocation(latLng, y, r);
+        LatLng center = MapUtils.getLocation(latLng, (y - x) / 2 + x, r);
 
         //线
         aMap.addPolyline(new PolylineOptions().
@@ -167,46 +256,45 @@ public class MapActivity extends BaseActivity {
 //                .geodesic(true).color(Color.RED));
 
         aMap.addArc(new ArcOptions()
-                .point(start,center, end)
+                .point(start, center, end)
                 .strokeColor(Color.RED));
     }
 
     /**
      * 要想画出椭圆,还差一个角度参数, 不知道怎么画
-     * @param latLng 中心点坐标
-     * @param radius      半径 米
-     * @param  proportion 椭圆比例 长半径和短半径的比例 我自己加的参数
      *
+     * @param latLng     中心点坐标
+     * @param radius     半径 米
+     * @param proportion 椭圆比例 长半径和短半径的比例 我自己加的参数
      */
-    private void add(LatLng latLng,int radius, double proportion) {
+    private void add(LatLng latLng, int radius, double proportion) {
 
-            double r = 6371000.79;
-            PolylineOptions options = new PolylineOptions();
-            int numpoints = 100;
-            double phase = 2 * Math.PI / numpoints;
+        double r = 6371000.79;
+        PolylineOptions options = new PolylineOptions();
+        int numpoints = 100;
+        double phase = 2 * Math.PI / numpoints;
 
-            //画图
-            for (int i = 0; i < numpoints; i++) {
-                double dx = (radius * Math.cos(i * phase));
-                double dy = (radius * Math.sin(i * phase)) * proportion;//乘以1.6 椭圆比例
+        //画图
+        for (int i = 0; i < numpoints; i++) {
+            double dx = (radius * Math.cos(i * phase));
+            double dy = (radius * Math.sin(i * phase)) * proportion;//乘以1.6 椭圆比例
 
-                double dlng = dx / (r * Math.cos(latLng.latitude * Math.PI / 180) * Math.PI / 180);
-                double dlat = dy / (r * Math.PI / 180);
-                double newlng = latLng.longitude + dlng;
-                options.add(new LatLng(latLng.latitude + dlat, newlng));
-            }
+            double dlng = dx / (r * Math.cos(latLng.latitude * Math.PI / 180) * Math.PI / 180);
+            double dlat = dy / (r * Math.PI / 180);
+            double newlng = latLng.longitude + dlng;
+            options.add(new LatLng(latLng.latitude + dlat, newlng));
+        }
 
-            aMap.addPolyline(options.width(10).useGradient(true).setDottedLine(true));
+        aMap.addPolyline(options.width(10).useGradient(true).setDottedLine(true));
     }
 
     private ArrayList<DrawBean> createRectangle(LatLng center, double halfWidth,
-                                         double halfHeight) {
+                                                double halfHeight) {
         ArrayList<LatLng> latLngs = new ArrayList<LatLng>();
         latLngs.add(new LatLng(center.latitude - halfHeight, center.longitude - halfWidth));
         latLngs.add(new LatLng(center.latitude - halfHeight, center.longitude + halfWidth));
         latLngs.add(new LatLng(center.latitude + halfHeight, center.longitude + halfWidth));
         latLngs.add(new LatLng(center.latitude + halfHeight, center.longitude - halfWidth));
-
 
 
         ArrayList<DrawBean> beans = new ArrayList<>();
@@ -281,6 +369,11 @@ public class MapActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (null != mLocationClient) {
+            mLocationClient.stopLocation();
+            mLocationClient.onDestroy();
+        }
         mapView.onDestroy();
     }
+
 }

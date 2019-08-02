@@ -3,12 +3,15 @@
     package="com.sai.myjni">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <application
         android:name=".MyApplication"
@@ -18,7 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".effects.SnowActivity"></activity>
+        <activity android:name=".lazyfragment.LazyActivity"></activity>
+        <activity android:name=".annotation.AnnotationActivity" />
+        <activity android:name=".rx.RxActivity" />
+        <activity android:name=".effects.SnowActivity" />
         <activity android:name=".effects.EffectsActivity" />
         <activity android:name=".db.DBActivity" />
         <activity android:name=".SaiViewActivity" />
@@ -54,7 +60,9 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="6a77947e5528ef632f74188e61c8863d" />
+            android:value="ffad478699ecb590afca67c1bd30f0ed" />
+
+        <service android:name="com.amap.api.location.APSService" />
     </application>
 
 </manifest>
