@@ -14,6 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * @author dianxiaoer
+ */
 public class EffectsActivity extends BaseActivity {
 
 
@@ -56,9 +59,11 @@ public class EffectsActivity extends BaseActivity {
         });
         switchButton.setTitle("暖改动后发生的发挥");
         switchButton.setSaiClickListener(new SaiClickListener() {
+
             @Override
-            public void OnClick(boolean selector) {
-                    DToast.warning(EffectsActivity.this, "开关="+selector);
+            public void OnSaiSwitchClick(View view, boolean mySwitch) {
+                DToast.warning(EffectsActivity.this, view.getId()+"开关="+mySwitch);
+
             }
         });
     }

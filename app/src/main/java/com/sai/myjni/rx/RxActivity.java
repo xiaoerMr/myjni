@@ -1,8 +1,8 @@
 package com.sai.myjni.rx;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
@@ -10,6 +10,8 @@ import com.sai.myjni.base.BaseActivity;
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -21,20 +23,22 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxActivity extends BaseActivity {
 
+    @BindView(R.id.textView5)
+    TextView textView5;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_rx;
     }
 
-    @SuppressLint("CheckResult")
     @Override
     protected void initView(Bundle savedInstanceState) {
 //        doRxDome();
 //        doRxDome1();
 //        doRxDome2();
-        doRxDome3();
+//        doRxDome3();
 //        doRxDome4();
-//        doRxDome5();
+        doRxDome5();
 
 
         //将数据 收集到 数据结构 当中
@@ -61,15 +65,15 @@ public class RxActivity extends BaseActivity {
 
     private void doRxDome5() {
         RetrofitManager.getInstance()
-                .getNews(this,"","", new RxObserver<BaseResponse>() {
+                .getNews(this, "2", "1", new RxObserver<BaseResponse>() {
                     @Override
                     protected void onSuccess(BaseResponse o) {
-
+                        textView5.setText("成功: "+o.toString());
                     }
 
                     @Override
                     protected void onFail(Throwable e) {
-
+                        textView5.setText("失败: "+e.getMessage());
                     }
                 });
     }
@@ -89,7 +93,7 @@ public class RxActivity extends BaseActivity {
                 .create(new ObservableOnSubscribe<String>() {
                     @Override
                     public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                        Log.e("subscribe--",Thread.currentThread().getName());
+                        Log.e("subscribe--", Thread.currentThread().getName());
                         emitter.onNext("Thread");
                     }
                 })
@@ -103,7 +107,7 @@ public class RxActivity extends BaseActivity {
 
                     @Override
                     public void onNext(String s) {
-                        Log.e("onNext--",Thread.currentThread().getName());
+                        Log.e("onNext--", Thread.currentThread().getName());
                     }
 
                     @Override
@@ -123,7 +127,7 @@ public class RxActivity extends BaseActivity {
 //        Observable.timer(2, TimeUnit.SECONDS).subscribe();
 
         // 2秒后 开始2秒循环 从0 开始
-        Observable.interval(2,TimeUnit.SECONDS)
+        Observable.interval(2, TimeUnit.SECONDS)
                 .compose(this.<Long>bindToLifecycle())
                 .subscribe(new Observer<Long>() {
                     @Override
@@ -133,7 +137,7 @@ public class RxActivity extends BaseActivity {
 
                     @Override
                     public void onNext(Long aLong) {
-                        Log.e("onNext", "onNext: "+aLong);
+                        Log.e("onNext", "onNext: " + aLong);
                     }
 
                     @Override
@@ -158,16 +162,16 @@ public class RxActivity extends BaseActivity {
         // E/onComplete: 完成
 
         //最大不超过 10个事件  内部也是使用 fromArray 操作符
-        Observable.just(1,"2",3)
+        Observable.just(1, "2", 3)
                 .subscribe(new Observer<Serializable>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        Log.e("onSubscribe", "onSubscribe: " );
+                        Log.e("onSubscribe", "onSubscribe: ");
                     }
 
                     @Override
                     public void onNext(Serializable serializable) {
-                        Log.e("onNext", serializable.toString() );
+                        Log.e("onNext", serializable.toString());
                     }
 
                     @Override
@@ -177,7 +181,7 @@ public class RxActivity extends BaseActivity {
 
                     @Override
                     public void onComplete() {
-                        Log.e("onComplete", "完成" );
+                        Log.e("onComplete", "完成");
                     }
                 });
 
@@ -233,7 +237,7 @@ public class RxActivity extends BaseActivity {
 
             @Override
             public void onComplete() {
-                Log.e("onComplete--","完成");
+                Log.e("onComplete--", "完成");
             }
         };
 
@@ -241,7 +245,8 @@ public class RxActivity extends BaseActivity {
         observable.subscribe(observer);
 
     }
-    private void doRxDome1(){
+
+    private void doRxDome1() {
 
         // observer---: onSubscribe
         // subscribe--: 发送第一个事件
@@ -281,8 +286,15 @@ public class RxActivity extends BaseActivity {
 
             @Override
             public void onComplete() {
-                Log.e("onComplete--","完成");
+                Log.e("onComplete--", "完成");
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

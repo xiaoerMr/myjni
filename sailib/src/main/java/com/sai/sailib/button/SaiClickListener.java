@@ -1,5 +1,7 @@
 package com.sai.sailib.button;
 
+import android.view.View;
+
 public interface SaiClickListener {
-    void OnClick(boolean mySwitch);
+    void onSaiSwitchClick(View view, boolean mySwitch);
 }

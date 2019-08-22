@@ -156,7 +156,7 @@ public class MapActivity extends BaseActivity {
 
     @OnClick({R.id.r_to_cir, R.id.oval, R.id.sector,
             R.id.more, R.id.show, R.id.hint, R.id.delete,
-            R.id.location, R.id.loc_content})
+            R.id.location, R.id.loc_content,R.id.state})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.more: //多种类型
@@ -227,6 +227,36 @@ public class MapActivity extends BaseActivity {
                 DLog.e(pt.toString());
                 aMap.addMarker(new MarkerOptions().position(pt));
                 break;
+            case R.id.state: //态势
+
+                setData();
+
+                break;
+
+                default:
+        }
+    }
+
+    private void setData() {
+        LatLng latLng1 = new LatLng(1,1);
+        LatLng latLng2 = new LatLng(1,1);
+        LatLng latLng3 = new LatLng(1,1);
+        LatLng latLng4 = new LatLng(1,1);
+        LatLng latLng5 = new LatLng(1,1);
+        ArrayList<LatLng> LatLngs = new ArrayList<>();
+        LatLngs.add(latLng1);
+        LatLngs.add(latLng2);
+        LatLngs.add(latLng3);
+        LatLngs.add(latLng4);
+        LatLngs.add(latLng5);
+
+        ArrayList<StateBean> beans = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            StateBean bean = new StateBean();
+            bean.setName("latLng"+(1+i));
+            bean.setLatLngs(LatLngs.get(i));
+            beans.add(bean);
         }
     }
 

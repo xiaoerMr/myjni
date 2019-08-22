@@ -116,6 +116,16 @@
         android:text="获取中心点"
         android:textSize="10sp" />
 
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintLeft_toRightOf="@+id/loc_content"
+        android:id="@+id/loc_state"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="态势"
+        android:textSize="10sp" />
+
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"

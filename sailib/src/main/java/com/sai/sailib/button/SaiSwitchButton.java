@@ -15,6 +15,7 @@ import com.sai.sailib.R;
 
 /**
  * 带名称的 开关按钮
+ * @author dianxiaoer
  */
 public class SaiSwitchButton extends View {
 
@@ -34,6 +35,11 @@ public class SaiSwitchButton extends View {
     private final static int select_OFF = 1;
     private int selectDef = select_ON;
     private String title;
+    private float titleSize;
+
+    public void setTitleSize(int titleSize) {
+        this.titleSize = titleSize;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -56,12 +62,13 @@ public class SaiSwitchButton extends View {
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SaiSwitchButton);
         title = ta.getString(R.styleable.SaiSwitchButton_title);
+        titleSize = ta.getDimension(R.styleable.SaiSwitchButton_text_size, 35);
 
         paintText = new Paint();
         paintText.setAntiAlias(true);
-        paintText.setTextSize(50);
         paintText.setTextAlign(Paint.Align.LEFT);
-
+        paintText.setColor(Color.GRAY);
+        paintText.setTextSize(titleSize);
 
         paintButton = new Paint();
         paintButton.setAntiAlias(true);
@@ -70,7 +77,7 @@ public class SaiSwitchButton extends View {
         paintOFF = new Paint();
         paintOFF.setAntiAlias(true);
         paintOFF.setColor(Color.WHITE);
-        paintOFF.setTextSize(45);
+        paintOFF.setTextSize(35);
         paintOFF.setTextAlign(Paint.Align.LEFT);
 
         paintButtonSelect = new Paint();
@@ -115,10 +122,12 @@ public class SaiSwitchButton extends View {
     }
 
     private void drawButton(Canvas canvas) {
+        // 设置个新的长方形
         RectF oval3 = new RectF(
                 widthView - paddingW - (buttonW * 2), centerHeigth - buttonH,
-                widthView - paddingW, centerHeigth + buttonH);// 设置个新的长方形
-        canvas.drawRoundRect(oval3, 20, 20, paintButton);//第二个参数是x半径，第三个参数是y半
+                widthView - paddingW, centerHeigth + buttonH);
+        //第二个参数是x半径，第三个参数是y半
+        canvas.drawRoundRect(oval3, 20, 20, paintButton);
     }
 
     private void drawSelectButton(Canvas canvas, int select) {
@@ -140,10 +149,12 @@ public class SaiSwitchButton extends View {
             paintButtonSelect.setColor(getResources().getColor(R.color.sai_switch_off));
         }
 
+        // 设置个新的长方形
         RectF oval3 = new RectF(
                 left + 1, top + 1,
-                right - 1, bottom - 1);// 设置个新的长方形
-        canvas.drawRoundRect(oval3, 20, 20, paintButtonSelect);//第二个参数是x半径，第三个参数是y半
+                right - 1, bottom - 1);
+        //第二个参数是x半径，第三个参数是y半
+        canvas.drawRoundRect(oval3, 20, 20, paintButtonSelect);
 
         //1 = 开 ; 0 = 关
         if (select == select_ON) {
@@ -182,7 +193,7 @@ public class SaiSwitchButton extends View {
                 //1 = 开 ; 0 = 关
                 selectDef = selectDef == select_ON ? select_OFF : select_ON;
                 boolean seDef = selectDef == select_ON ? false : true;
-                saiClickListener.OnClick(seDef);
+                saiClickListener.onSaiSwitchClick(this,seDef);
                 invalidate();
             }
             return true;
@@ -190,7 +201,9 @@ public class SaiSwitchButton extends View {
         return super.onTouchEvent(event);
     }
 
-    //销毁时调用
+    /**
+     *     页面卸载时调用
+     */
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();

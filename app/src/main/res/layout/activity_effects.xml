@@ -30,7 +30,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <com.sai.myjni.effects.ScakeV
         android:id="@+id/scaleV"
         android:layout_width="match_parent"
@@ -42,8 +41,8 @@
         android:id="@+id/direction"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 
     <EditText
@@ -53,23 +52,31 @@
         android:layout_marginTop="8dp"
         android:inputType="number"
         android:text="0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/button" />
+        app:layout_constraintLeft_toRightOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.sai.sailib.button.SaiSwitchButton
         android:id="@+id/switch_button"
         android:layout_width="300dp"
         android:layout_height="30dp"
-        app:title="建设大街发送东方"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scaleV"
-        />
+        app:title="建设大街发送东方" />
+
+    <com.sai.sailib.button.SaiSwitchButton
+        android:id="@+id/switch_button1"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_button"
+        app:text_size="14sp"
+        app:title="建设大街发方" />
 
     <Button
-        android:text="确定"
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="确定"
         app:layout_constraintStart_toEndOf="@+id/button13"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

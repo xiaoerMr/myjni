@@ -193,5 +193,6 @@
     <!--开关选择 view-->
     <declare-styleable name="SaiSwitchButton">
         <attr name="title" format="string"/>
+        <attr name="text_size" format="dimension"/>
     </declare-styleable>
 </resources>
