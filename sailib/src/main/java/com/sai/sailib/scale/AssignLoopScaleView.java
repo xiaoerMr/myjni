@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -29,7 +30,7 @@ public class AssignLoopScaleView extends View {
     private int mScaleDistance;
     private int mShowItemSize = 3;
 
-    private int mLineColor = Color.WHITE;
+    private int mLineColor = Color.BLACK, bgColor = Color.parseColor("#CD5E5D5D");
     private int mScaleTextSize = 24;
 
     private float mMaxScaleHeight = 40, mMinScaleHeight = 20;
@@ -94,18 +95,17 @@ public class AssignLoopScaleView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        //绘制背景
-        doDrawBg(canvas);
-
         //绘制轴线
         canvas.drawLine(getPaddingStart(), centerY,
                 mViewWidth - getPaddingEnd(), centerY, paint);
+        //绘制刻度
+        doDrawScale(canvas);
 
         //绘制当前位置标识
         doDrawCurrent(canvas);
 
-        //绘制刻度
-        doDrawScale(canvas);
+        //绘制背景
+        doDrawBg(canvas);
     }
 
     /**
@@ -114,7 +114,8 @@ public class AssignLoopScaleView extends View {
      * @param canvas 画布
      */
     private void doDrawBg(Canvas canvas) {
-
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawRoundRect(new RectF(8, 4, mViewWidth - 8, mViewHeight - 4), 30, 30, paint);
     }
 
     /**
@@ -159,7 +160,10 @@ public class AssignLoopScaleView extends View {
                 if (currentTemp < 0) {
                     valueTemp = currentTemp + 360;
                     stringBuffer.append(valueTemp);
-                } else {
+                }else if (currentTemp >=360){
+                    valueTemp = currentTemp - 360;
+                    stringBuffer.append(valueTemp);
+                }else {
                     stringBuffer.append(currentTemp);
                 }
 
@@ -167,7 +171,10 @@ public class AssignLoopScaleView extends View {
                 if (currentTemp >= 360) {
                     valueTemp = currentTemp - 360;
                     stringBuffer.append(valueTemp);
-                } else {
+                }else if (currentTemp <0){
+                    valueTemp = currentTemp + 360;
+                    stringBuffer.append(valueTemp);
+                }else {
                     stringBuffer.append(currentTemp);
                 }
             }
@@ -190,6 +197,12 @@ public class AssignLoopScaleView extends View {
      */
     private void doDrawCurrent(Canvas canvas) {
         //绘制当前位置数
+
+        if (mCurrentValue >= 360) {
+            mCurrentValue -= 360;
+        } else if (mCurrentValue < 0) {
+            mCurrentValue += 360;
+        }
         stringBuffer.setLength(0);
         stringBuffer.append(mCurrentValue);
         stringBuffer.append(tag);
