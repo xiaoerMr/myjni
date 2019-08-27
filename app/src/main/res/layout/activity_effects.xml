@@ -72,6 +72,15 @@
         app:text_size="14sp"
         app:title="建设大街发方" />
 
+    <com.sai.sailib.scale.AssignLoopScaleView
+        android:id="@+id/loop_scale"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_button1"/>
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

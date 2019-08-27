@@ -8,10 +8,10 @@ import com.sai.myjni.R;
 import com.sai.myjni.base.BaseActivity;
 import com.sai.sailib.button.SaiClickListener;
 import com.sai.sailib.button.SaiSwitchButton;
+import com.sai.sailib.scale.AssignLoopScaleView;
 import com.sai.sailib.toast.DToast;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -28,6 +28,8 @@ public class EffectsActivity extends BaseActivity {
     DirectionView direction;
     @BindView(R.id.switch_button)
     SaiSwitchButton switchButton;
+    @BindView(R.id.loop_scale)
+    AssignLoopScaleView vAssignLoopScaleView;
 
     @Override
     protected int getLayoutId() {
@@ -61,7 +63,7 @@ public class EffectsActivity extends BaseActivity {
         switchButton.setSaiClickListener(new SaiClickListener() {
 
             @Override
-            public void OnSaiSwitchClick(View view, boolean mySwitch) {
+            public void onSaiSwitchClick(View view, boolean mySwitch) {
                 DToast.warning(EffectsActivity.this, view.getId()+"开关="+mySwitch);
 
             }
@@ -82,6 +84,7 @@ public class EffectsActivity extends BaseActivity {
 
         String trim = input.getText().toString().trim();
         scaleV.showSacke(Float.valueOf(trim));
+        vAssignLoopScaleView.setCurrentValue(Integer.valueOf(trim));
     }
 
 
