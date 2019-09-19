@@ -14,7 +14,6 @@ import com.sai.myjni.dia.DiaLogActivity;
 import com.sai.myjni.effects.EffectsActivity;
 import com.sai.myjni.file.ReadFileActivity;
 import com.sai.myjni.lazyfragment.LazyActivity;
-import com.sai.myjni.lazyfragment.LazyFragment;
 import com.sai.myjni.livedata.SaiLiveDateBus;
 import com.sai.myjni.map.MapActivity;
 import com.sai.myjni.netstate.NetStateActivity;
@@ -44,8 +43,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
         initPermission();
-
-
         //测试从 DiaLogActivity 发送的 消息总线
         //有一个 bug: 先发送事件,后订阅也可以收到事件
 //        LiveDataBus.getInstance()

@@ -15,4 +15,11 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteX="104dp"
         tools:layout_editor_absoluteY="277dp" />
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -156,7 +156,7 @@ public class MapActivity extends BaseActivity {
 
     @OnClick({R.id.r_to_cir, R.id.oval, R.id.sector,
             R.id.more, R.id.show, R.id.hint, R.id.delete,
-            R.id.location, R.id.loc_content,R.id.state})
+            R.id.location, R.id.loc_content,R.id.loc_state})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.more: //多种类型
@@ -227,7 +227,7 @@ public class MapActivity extends BaseActivity {
                 DLog.e(pt.toString());
                 aMap.addMarker(new MarkerOptions().position(pt));
                 break;
-            case R.id.state: //态势
+            case R.id.loc_state: //态势
 
                 setData();
 

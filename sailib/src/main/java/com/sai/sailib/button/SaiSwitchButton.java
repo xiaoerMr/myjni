@@ -15,6 +15,7 @@ import com.sai.sailib.R;
 
 /**
  * 带名称的 开关按钮
+ *
  * @author dianxiaoer
  */
 public class SaiSwitchButton extends View {
@@ -45,6 +46,16 @@ public class SaiSwitchButton extends View {
         this.title = title;
     }
 
+    public void setTitle(boolean defSwitch) {
+        // 1 = 开 ; 0 = 关
+        if (defSwitch) {
+            selectDef = select_OFF;
+        } else {
+            selectDef = select_ON;
+        }
+        invalidate();
+    }
+
     public void setSaiClickListener(SaiClickListener saiClickListener) {
         this.saiClickListener = saiClickListener;
     }
@@ -63,7 +74,12 @@ public class SaiSwitchButton extends View {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SaiSwitchButton);
         title = ta.getString(R.styleable.SaiSwitchButton_title);
         titleSize = ta.getDimension(R.styleable.SaiSwitchButton_text_size, 35);
-
+        boolean deswitch = ta.getBoolean(R.styleable.SaiSwitchButton_def_switch, false);
+        if (deswitch) {
+            selectDef = select_OFF;
+        } else {
+            selectDef = select_ON;
+        }
         paintText = new Paint();
         paintText.setAntiAlias(true);
         paintText.setTextAlign(Paint.Align.LEFT);
@@ -170,7 +186,7 @@ public class SaiSwitchButton extends View {
             leftOFF = left + 5;
 
         }
-        RectF  rectOff = new RectF(left, top + 2, right, bottom - 2);
+        RectF rectOff = new RectF(left, top + 2, right, bottom - 2);
 
         Paint.FontMetrics fontMetrics = paintOFF.getFontMetrics();
         float distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
@@ -193,7 +209,7 @@ public class SaiSwitchButton extends View {
                 //1 = 开 ; 0 = 关
                 selectDef = selectDef == select_ON ? select_OFF : select_ON;
                 boolean seDef = selectDef == select_ON ? false : true;
-                saiClickListener.onSaiSwitchClick(this,seDef);
+                saiClickListener.onSaiSwitchClick(this, seDef);
                 invalidate();
             }
             return true;
@@ -202,7 +218,7 @@ public class SaiSwitchButton extends View {
     }
 
     /**
-     *     页面卸载时调用
+     * 页面卸载时调用
      */
     @Override
     protected void onDetachedFromWindow() {

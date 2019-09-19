@@ -194,5 +194,6 @@
     <declare-styleable name="SaiSwitchButton">
         <attr name="title" format="string"/>
         <attr name="text_size" format="dimension"/>
+     <attr name="def_switch" format="boolean"/>
     </declare-styleable>
 </resources>

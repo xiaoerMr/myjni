@@ -1,1 +1,1 @@
-include ':app',':sailib'
+include ':app',':sailib', ':saihttplib'
