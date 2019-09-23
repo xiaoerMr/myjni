@@ -211,7 +211,7 @@ public class DialogUtils extends DialogFragment {
 
     /**
      * 设置主题
-     * 在 onCreate() 方法中调用 setStyle() 方法  cancel
+     * 在 onCreateApiService() 方法中调用 setStyle() 方法  cancel
      */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

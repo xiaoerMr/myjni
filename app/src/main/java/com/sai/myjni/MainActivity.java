@@ -1,9 +1,16 @@
 package com.sai.myjni;
 
 import android.Manifest;
+import android.arch.lifecycle.DefaultLifecycleObserver;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,9 +27,16 @@ import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.rx.RxActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
+import com.vexcellent.saihttplib.ResponseBean;
+import com.vexcellent.saihttplib.SaiCallBack;
+import com.vexcellent.saihttplib.SaiHttpFactory;
+import com.vexcellent.saihttplib.SaiHttpManager;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -68,6 +82,48 @@ public class MainActivity extends BaseActivity {
 //                text.setText(vSaiEdit.getInputText());
 //            }
 //        });
+
+        SaiHttpFactory.getInstance().http();
+//        SaiHttpFactory.getInstance().startLoop();
+        SaiHttpManager.getInstance().doLogin(this,"3", "4", new SaiCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                Log.e("-成功--",s);
+            }
+
+            @Override
+            public void onError(String errorMsg) {
+                Log.e("-失败--",errorMsg);
+            }
+        });
+
+        //生命周期
+        LifecycleObserver lifecycleObserver = new LifecycleObserver() {
+            @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+            private void myDoResume() {
+                Log.e("----", "DefOb- myDoResume-"+System.currentTimeMillis());
+            }
+              @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+            private void myDoResu() {
+                Log.e("----", "DefOb- myDoCreate-"+System.currentTimeMillis());
+            }
+
+
+        };
+        getLifecycle().addObserver(lifecycleObserver);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("----", "DefOb- onResume-"+System.currentTimeMillis());
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SaiHttpFactory.getInstance().stopLoop();
     }
 
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,
