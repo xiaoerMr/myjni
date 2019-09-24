@@ -25,8 +25,7 @@ import com.sai.myjni.rx.RxActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
 import com.vexcellent.saihttplib.callback.SaiCallBack;
-import com.vexcellent.saihttplib.core.SaiHttpFactory;
-import com.vexcellent.saihttplib.SaiHttpManager;
+import com.sai.myjni.base.HttpManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,9 +75,9 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
 
-        SaiHttpFactory.getInstance().http();
+//        SaiHttpFactory.getInstance().http();
 //        SaiHttpFactory.getInstance().startLoop();
-        SaiHttpManager.getInstance().doLogin(this,"3", "4", new SaiCallBack<String>() {
+        HttpManager.getInstance().doLogin(this,"3", "4", new SaiCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 Log.e("-成功--",s);
@@ -116,7 +115,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        SaiHttpFactory.getInstance().stopLoop();
+//        SaiHttpFactory.getInstance().stopLoop();
     }
 
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,

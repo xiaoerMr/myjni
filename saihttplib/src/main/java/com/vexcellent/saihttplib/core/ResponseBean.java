@@ -19,6 +19,7 @@ public class ResponseBean<T> {
     private String type;
     private int status;
 
+
     public T getData() {
         return data;
     }

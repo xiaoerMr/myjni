@@ -2,7 +2,6 @@ package com.vexcellent.saihttplib.core;
 
 import android.util.Log;
 
-import com.vexcellent.saihttplib.ApiService;
 import com.vexcellent.saihttplib.BuildConfig;
 import com.vexcellent.saihttplib.client.SaiHttpClient;
 import com.vexcellent.saihttplib.client.SaiRetrofit;
@@ -32,7 +31,7 @@ import retrofit2.Retrofit;
  * email：  https://www.jianshu.com/p/0cd258eecf60
  * description：网络请求框架入口
  */
-public class SaiHttpFactory {
+public class SaiHttpFactory<T> {
     private volatile static SaiHttpFactory factory;
     private boolean stop = true;
     private String TAG = "-----------";
@@ -41,17 +40,6 @@ public class SaiHttpFactory {
     private Map<String,Retrofit> retrofitMap = new HashMap<String,Retrofit>(15);
 
 
-    public static SaiHttpFactory getInstance() {
-        if (null == factory) {
-            synchronized (SaiHttpFactory.class) {
-                if (null == factory) {
-                    factory = new SaiHttpFactory();
-                }
-            }
-        }
-        return factory;
-    }
-
     private Retrofit init(String baseUrl,boolean isDug) {
         SaiHttpClient http = new SaiHttpClient();
         OkHttpClient okHttpClient = http.getOkHttpClient(isDug);
@@ -59,7 +47,7 @@ public class SaiHttpFactory {
         return saiRetrofit.getRetrofit(baseUrl, okHttpClient);
     }
 
-    public ApiService onCreateApiService(Class<ApiService> apiServiceClass, String baseUrl) {
+    public T onCreateApiService(Class<T> apiServiceClass, String baseUrl) {
 
         if (retrofitMap.containsKey(baseUrl)){
             retrofit = retrofitMap.get(baseUrl);
@@ -72,7 +60,9 @@ public class SaiHttpFactory {
 
 
 
-    public void http() {
+    // -----以下为-示例------
+
+    private void http() {
 
         // 发送一个事件
         // 处理结果
@@ -129,7 +119,7 @@ public class SaiHttpFactory {
                 });
     }
 
-    public void startLoop() {
+    private void startLoop() {
         // 延迟循环发送
         disposableLoop = Flowable
                 .interval(2, 2, TimeUnit.SECONDS)
@@ -147,13 +137,13 @@ public class SaiHttpFactory {
                 });
     }
 
-    public void stopLoop() {
+    private void stopLoop() {
         if (null != disposableLoop) {
             disposableLoop.dispose();
         }
     }
 
-    public void simple() {
+    private void simple() {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
