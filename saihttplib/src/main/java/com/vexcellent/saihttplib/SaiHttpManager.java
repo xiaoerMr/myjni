@@ -2,6 +2,10 @@ package com.vexcellent.saihttplib;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
+import com.vexcellent.saihttplib.callback.SaiCallBack;
+import com.vexcellent.saihttplib.core.ResponseBean;
+import com.vexcellent.saihttplib.core.SaiHttpFactory;
+import com.vexcellent.saihttplib.core.SaiObserver;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

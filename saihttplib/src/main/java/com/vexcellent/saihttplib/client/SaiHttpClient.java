@@ -1,8 +1,10 @@
-package com.vexcellent.saihttplib;
+package com.vexcellent.saihttplib.client;
 
 import android.util.Log;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -50,7 +52,13 @@ public class SaiHttpClient {
     class LogInterceptor implements HttpLoggingInterceptor.Logger {
         @Override
         public void log(String message) {
-            Log.d("--网络请求日志--", message);
+            try {
+                Log.d("--网络请求日志--", URLDecoder.decode(message, "utf-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+                Log.d("--网络请求日志--", message);
+
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.vexcellent.saihttplib;
+package com.vexcellent.saihttplib.core;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -18,7 +18,6 @@ public abstract class SaiObserver<T> implements Observer<T> {
 
     @Override
     public void onNext(T o) {
-
         onSuccess(o);
     }
 

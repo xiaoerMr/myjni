@@ -1,14 +1,11 @@
 package com.sai.myjni;
 
 import android.Manifest;
-import android.arch.lifecycle.DefaultLifecycleObserver;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -27,16 +24,12 @@ import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.rx.RxActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
-import com.vexcellent.saihttplib.ResponseBean;
-import com.vexcellent.saihttplib.SaiCallBack;
-import com.vexcellent.saihttplib.SaiHttpFactory;
+import com.vexcellent.saihttplib.callback.SaiCallBack;
+import com.vexcellent.saihttplib.core.SaiHttpFactory;
 import com.vexcellent.saihttplib.SaiHttpManager;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.OnClick;

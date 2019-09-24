@@ -1,6 +1,11 @@
-package com.vexcellent.saihttplib;
+package com.vexcellent.saihttplib.core;
 
 import android.util.Log;
+
+import com.vexcellent.saihttplib.ApiService;
+import com.vexcellent.saihttplib.BuildConfig;
+import com.vexcellent.saihttplib.client.SaiHttpClient;
+import com.vexcellent.saihttplib.client.SaiRetrofit;
 
 import java.util.HashMap;
 import java.util.Map;

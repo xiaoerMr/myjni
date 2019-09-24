@@ -1,11 +1,12 @@
-package com.vexcellent.saihttplib;
+package com.vexcellent.saihttplib.client;
 
 import android.text.TextUtils;
+
+import com.vexcellent.saihttplib.converterfactory.CustomGsonConverterFactory;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * @author 店小二
@@ -28,7 +29,8 @@ public class SaiRetrofit {
         Retrofit.Builder builder = new Retrofit
                 .Builder()
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl);
         return builder.build();

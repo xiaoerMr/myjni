@@ -1,8 +1,9 @@
 package com.vexcellent.saihttplib;
 
+import com.vexcellent.saihttplib.core.ResponseBean;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 /**
@@ -22,7 +23,7 @@ public interface ApiService {
 
 //    @Headers("User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0")
 
-    @GET("api/qqmusic/8446666/json")
+    @GET("api/qqmusic/84466266/json")
     Observable<ResponseBean> doLogin();
 
 }

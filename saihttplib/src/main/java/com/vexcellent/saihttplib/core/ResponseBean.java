@@ -1,4 +1,4 @@
-package com.vexcellent.saihttplib;
+package com.vexcellent.saihttplib.core;
 
 /**
  * @author 店小二
@@ -50,5 +50,9 @@ public class ResponseBean<T> {
                 ", type='" + type + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public boolean isRequestSuccess() {
+        return status == 200;
     }
 }
