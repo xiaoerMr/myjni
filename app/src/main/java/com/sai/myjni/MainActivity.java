@@ -77,17 +77,17 @@ public class MainActivity extends BaseActivity {
 
 //        SaiHttpFactory.getInstance().http();
 //        SaiHttpFactory.getInstance().startLoop();
-        HttpManager.getInstance().doLogin(this,"3", "4", new SaiCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                Log.e("-成功--",s);
-            }
-
-            @Override
-            public void onError(String errorMsg) {
-                Log.e("-失败--",errorMsg);
-            }
-        });
+//        HttpManager.getInstance().doLogin(this,"3", "4", new SaiCallBack<String>() {
+//            @Override
+//            public void onSuccess(String s) {
+//                Log.e("-成功--",s);
+//            }
+//
+//            @Override
+//            public void onError(String errorMsg) {
+//                Log.e("-失败--",errorMsg);
+//            }
+//        });
 
         //生命周期
         LifecycleObserver lifecycleObserver = new LifecycleObserver() {
@@ -103,6 +103,7 @@ public class MainActivity extends BaseActivity {
 
         };
         getLifecycle().addObserver(lifecycleObserver);
+        HttpManager.getInstance().doDownFile(this);
     }
 
     @Override

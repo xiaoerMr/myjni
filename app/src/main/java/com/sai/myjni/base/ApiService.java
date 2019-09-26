@@ -3,6 +3,7 @@ package com.sai.myjni.base;
 import com.vexcellent.saihttplib.core.ResponseBean;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -26,4 +27,7 @@ public interface ApiService {
     @GET("api/qqmusic/84466266/json")
     Observable<ResponseBean> doLogin();
 
+    // http://download.wondershare.com/mac-tunesgo_full2903.dmg
+    @GET("mac-tunesgo_full2903.dmg")
+    Observable<ResponseBody> doDownFile();
 }

@@ -67,6 +67,10 @@ public class HttpManager extends SaiHttpManager {
         });
     }
 
+    public void doDownFile(AppCompatActivity activity) {
+        RxAppCompatActivity appCompatActivity = (RxAppCompatActivity) activity;
+    }
+
 //    public void doLoginDouble(RxAppCompatActivity activity, String num, String page, final SaiCallBack<String> callBack) {
 //
 //        apiService.doLogin()
@@ -113,7 +117,6 @@ public class HttpManager extends SaiHttpManager {
                 .compose(fragmentActivity.<ResponseBean>bindToLifecycle())
                 .subscribe(observer);
     }
-
 
 
 }

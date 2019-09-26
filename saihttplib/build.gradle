@@ -30,6 +30,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    implementation rootProject.ext.dependencies["lifecycle_common"]
+    implementation rootProject.ext.dependencies["lifecycle_livedata"]
+
     implementation rootProject.ext.dependencies["rxlifecycle"]
     implementation rootProject.ext.dependencies["rxlifecycle_android"]
     implementation rootProject.ext.dependencies["rxlifecycle_components"]
