@@ -49,8 +49,8 @@ public class LoadindView extends DialogFragment {
         WindowManager.LayoutParams params = win.getAttributes();
         params.gravity = Gravity.CENTER;
         // 使用ViewGroup.LayoutParams，以便Dialog 宽度充满整个屏幕
-        params.width = 600;
-        params.height = 700;
+        params.width = 500;
+        params.height = 600;
         win.setAttributes(params);
     }
     @Nullable
@@ -67,7 +67,7 @@ public class LoadindView extends DialogFragment {
             vTitle.setText(title);
         }
         vLoad.setAnimation(rotateAnimation);
-       getDialog().setCanceledOnTouchOutside(canceledOutside);
+        getDialog().setCanceledOnTouchOutside(canceledOutside);
         return view;
     }
 
@@ -98,5 +98,12 @@ public class LoadindView extends DialogFragment {
 
     public void setCanceled(boolean b) {
         this.canceledOutside =b;
+    }
+
+    @Override
+    public void onDestroy() {
+
+        endAnimator();
+        super.onDestroy();
     }
 }
