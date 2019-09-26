@@ -1,5 +1,7 @@
 package com.vexcellent.saihttplib.converterfactory;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
@@ -41,9 +43,11 @@ public final class CustomGsonResponseBodyConverter<T> implements Converter<Respo
 
         String response = value.string();
         ResponseBean httpStatus = gson.fromJson(response, ResponseBean.class);
+        Log.e("---ResponseBean-----",httpStatus.toString());
+
         if (!httpStatus.isRequestSuccess()) {
             value.close();
-            throw new SaiException(httpStatus.getStatus(), httpStatus.getType());
+            throw new SaiException(httpStatus.getErrorCode(), httpStatus.getErrorMsg());
         }
 
         MediaType contentType = value.contentType();

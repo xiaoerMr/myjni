@@ -13,7 +13,6 @@ import io.reactivex.disposables.Disposable;
 public abstract class SaiObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(Disposable d) {
-
     }
 
     @Override
