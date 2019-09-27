@@ -1,4 +1,4 @@
-package com.sai.myjni.base;
+package com.vexcellent.saihttplib;
 
 import com.vexcellent.saihttplib.core.ResponseBean;
 

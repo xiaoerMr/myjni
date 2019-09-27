@@ -1,9 +1,8 @@
-package com.sai.myjni.base;
+package com.vexcellent.saihttplib;
 
 import android.support.v7.app.AppCompatActivity;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
-import com.vexcellent.saihttplib.SaiHttpManager;
 import com.vexcellent.saihttplib.callback.SaiCallBack;
 import com.vexcellent.saihttplib.core.ResponseBean;
 import com.vexcellent.saihttplib.core.SaiObserver;

@@ -2,6 +2,8 @@ package com.vexcellent.saihttplib.core;
 
 import android.util.Log;
 
+import com.vexcellent.saihttplib.down.SaiDownListener;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -22,9 +24,11 @@ import okio.Source;
 public class ProgressResponseBody extends ResponseBody {
     private ResponseBody responseBody;
     private BufferedSource bufferedSource;
+    private  SaiDownListener downListener;
 
-    public ProgressResponseBody(ResponseBody body) {
+    public ProgressResponseBody(ResponseBody body,SaiDownListener downListener) {
         responseBody = body;
+        this.downListener=downListener;
     }
 
     @Override
@@ -53,11 +57,10 @@ public class ProgressResponseBody extends ResponseBody {
             public long read(Buffer sink, long byteCount) throws IOException {
                 long bytesRead = super.read(sink, byteCount);
                 bytesReaded += bytesRead == -1 ? 0 : bytesRead;
-//                currentListener.doCurrent(bytesReaded,contentLength());
-                //实时发送当前已读取的字节和总字节
-//                SaiLiveDateBus.SingletonHolder().with("downProgress",Object.class).setValue(new long[]{bytesReaded,contentLength()});
-//                RxBus.getInstance().post(new FileLoadEvent(, ));
-                Log.e("--ProgressResponseBody-下载--", "--" + bytesReaded + "-->" + contentLength());
+                if (null != downListener) {
+                    downListener.updateProgress(bytesReaded,contentLength());
+                }
+//                Log.e("--ProgressResponseBody-下载--", "--" + bytesReaded + "-->" + contentLength());
                 return bytesRead;
             }
         };

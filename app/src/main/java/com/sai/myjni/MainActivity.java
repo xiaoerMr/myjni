@@ -24,8 +24,11 @@ import com.sai.myjni.netstate.NetStateActivity;
 import com.sai.myjni.rx.RxActivity;
 import com.sai.myjni.socket.SocketActivity;
 import com.sai.myjni.thread.ThreadActivity;
-import com.vexcellent.saihttplib.callback.SaiCallBack;
-import com.sai.myjni.base.HttpManager;
+import com.vexcellent.saihttplib.HttpManager;
+import com.vexcellent.saihttplib.SaiDownManager;
+import com.vexcellent.saihttplib.down.DownConsumer;
+import com.vexcellent.saihttplib.down.DownInfo;
+import com.vexcellent.saihttplib.down.SaiDownListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ import butterknife.OnClick;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
+import okhttp3.ResponseBody;
 
 public class MainActivity extends BaseActivity {
 
@@ -93,23 +97,56 @@ public class MainActivity extends BaseActivity {
         LifecycleObserver lifecycleObserver = new LifecycleObserver() {
             @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
             private void myDoResume() {
-                Log.e("----", "DefOb- myDoResume-"+System.currentTimeMillis());
+                Log.e("----", "DefOb- myDoResume-" + System.currentTimeMillis());
             }
-              @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+
+            @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
             private void myDoResu() {
-                Log.e("----", "DefOb- myDoCreate-"+System.currentTimeMillis());
+                Log.e("----", "DefOb- myDoCreate-" + System.currentTimeMillis());
             }
 
 
         };
         getLifecycle().addObserver(lifecycleObserver);
-        HttpManager.getInstance().doDownFile(this);
+
+
+        SaiDownManager manager = new SaiDownManager();
+
+        manager.startDown(new DownConsumer<ResponseBody>() {
+
+            int cuont = 0;
+
+            @Override
+            protected void onSaiStart() {
+                Log.e("-startDown---", "onSaiStart");
+            }
+
+            @Override
+            protected void onSaiUpdate(long totalLength , long countLength) {
+                cuont++;
+                if (cuont % 200 == 0) {
+                    Log.e("-startDown---", totalLength +"---" + countLength);
+                }
+            }
+
+            @Override
+            protected void onSaiNext(ResponseBody responseBody) {
+                Log.e("-startDown---", "onSaiNext");
+            }
+
+            @Override
+            protected void onSaiError(Throwable e) {
+                Log.e("-startDown---", "onSaiError");
+            }
+        });
+
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("----", "DefOb- onResume-"+System.currentTimeMillis());
+        Log.e("----", "DefOb- onResume-" + System.currentTimeMillis());
 
     }
 
@@ -122,7 +159,7 @@ public class MainActivity extends BaseActivity {
     @OnClick({R.id.jni, R.id.socket, R.id.net_state,
             R.id.read_file, R.id.dialog, R.id.thread,
             R.id.toutiao, R.id.stateview, R.id.effects,
-            R.id.map,R.id.view,R.id.db,R.id.rx,R.id.annotation,
+            R.id.map, R.id.view, R.id.db, R.id.rx, R.id.annotation,
             R.id.lazy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -211,10 +248,6 @@ public class MainActivity extends BaseActivity {
                 });
 
     }
-
-
-
-
 
 
 }

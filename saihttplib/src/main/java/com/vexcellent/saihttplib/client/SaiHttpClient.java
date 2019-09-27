@@ -36,30 +36,6 @@ public class SaiHttpClient {
 
         return builder.build();
     }
-
-
-
-    public OkHttpClient getOkHttpClientDown(boolean isDug) {
-
-        OkHttpClient.Builder builder = new OkHttpClient
-                .Builder()
-                .connectTimeout(5, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                // 错误重连
-                .retryOnConnectionFailure(true);
-
-        if (isDug) {
-            builder.addInterceptor(getLogInterceptor());
-        }
-        builder.addInterceptor(getCommInterceptor());
-
-        builder.addInterceptor(new ProgressInterceptor());
-
-        return builder.build();
-    }
-
-
     private Interceptor getCommInterceptor() {
         return new CommInterceptor();
     }
